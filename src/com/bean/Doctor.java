@@ -17,13 +17,12 @@ public class Doctor {
 	private String mobileNumber;
 	private String emailId;
 
-	public Doctor(String doctorId, String doctorName, String dateOfBirth,
+	public Doctor(String doctorName, String dateOfBirth,
 			String dateOfJoining, String gender, String qualification,
 			String specialization, String yearsOfExperience, String street,
 			String location, String city, String state, String pincode,
 			String mobileNumber, String emailId) {
 		super();
-		this.doctorId = doctorId;
 		this.doctorName = doctorName;
 		this.dateOfBirth = dateOfBirth;
 		this.dateOfJoining = dateOfJoining;

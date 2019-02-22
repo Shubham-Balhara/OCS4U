@@ -21,12 +21,11 @@ public class Profile {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Profile(String userId, String firstName, String lastName,
+	public Profile(String firstName, String lastName,
 			String dateOfBirth, String gender, String street, String location,
 			String city, String state, String pincode, String mobileNumber,
 			String emailId, String password) {
 		super();
-		this.userId = userId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.dateOfBirth = dateOfBirth;
