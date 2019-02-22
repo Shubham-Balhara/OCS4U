@@ -1,18 +1,18 @@
 package com.bean;
 
-public class PatientBean {
+public class Patient {
 	private String patientId;
 	private String appointmentDate;
 	private String ailmentType;
 	private String ailmentDetails;
 	private String diagnosisHistory;
 
-	public PatientBean() {
+	public Patient() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public PatientBean(String patientId, String appointmentDate,
+	public Patient(String patientId, String appointmentDate,
 			String ailmentType, String ailmentDetails, String diagnosisHistory) {
 		super();
 		this.patientId = patientId;

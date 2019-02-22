@@ -1,6 +1,6 @@
 package com.bean;
 
-public class DoctorBean {
+public class Doctor {
 	private String doctorId;
 	private String doctorName;
 	private String dateOfBirth;
@@ -17,7 +17,7 @@ public class DoctorBean {
 	private String mobileNumber;
 	private String emailId;
 
-	public DoctorBean(String doctorId, String doctorName, String dateOfBirth,
+	public Doctor(String doctorId, String doctorName, String dateOfBirth,
 			String dateOfJoining, String gender, String qualification,
 			String specialization, String yearsOfExperience, String street,
 			String location, String city, String state, String pincode,
@@ -40,7 +40,7 @@ public class DoctorBean {
 		this.emailId = emailId;
 	}
 
-	public DoctorBean() {
+	public Doctor() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

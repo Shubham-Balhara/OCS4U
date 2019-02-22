@@ -1,6 +1,6 @@
 package com.bean;
 
-public class LeaveBean {
+public class Leave {
 	private String reporterId ;
 	private String reporterName ;
 	private String doctorId ;
@@ -8,11 +8,11 @@ public class LeaveBean {
 	private String leaveTo ;
 	private String reason ;
 	private String status ;
-	public LeaveBean() {
+	public Leave() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public LeaveBean(String reporterId, String reporterName, String doctorId,
+	public Leave(String reporterId, String reporterName, String doctorId,
 			String leaveFrom, String leaveTo, String reason, String status) {
 		super();
 		this.reporterId = reporterId;

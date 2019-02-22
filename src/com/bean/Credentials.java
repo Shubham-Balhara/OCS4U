@@ -1,17 +1,17 @@
 package com.bean;
 
-public class CredentialsBean {
+public class Credentials {
 	private String userId;
 	private String password;
 	private String userType;
 	private int loginStatus;
 
-	public CredentialsBean() {
+	public Credentials() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public CredentialsBean(String userId, String password, String userType,
+	public Credentials(String userId, String password, String userType,
 			int loginStatus) {
 		super();
 		this.userId = userId;

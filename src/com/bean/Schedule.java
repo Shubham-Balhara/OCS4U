@@ -1,15 +1,15 @@
 package com.bean;
 
-public class ScheduleBean {
+public class Schedule {
 	private String scheduleId ;
 	private String doctorId ;
 	private String availableDays ;
 	private String slots ;
-	public ScheduleBean() {
+	public Schedule() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public ScheduleBean(String scheduleId, String doctorId,
+	public Schedule(String scheduleId, String doctorId,
 			String availableDays, String slots) {
 		super();
 		this.scheduleId = scheduleId;

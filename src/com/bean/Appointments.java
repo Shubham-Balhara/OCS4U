@@ -1,16 +1,16 @@
 package com.bean;
 
-public class AppointmentBean {
+public class Appointments {
 	private String appointmentId;
 	private String doctorId;
 	private String patientId;
 	private String  appointmentDate ;
 	private String appointmentTime ;
-	public AppointmentBean() {
+	public Appointments() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public AppointmentBean(String appointmentId, String doctorId,
+	public Appointments(String appointmentId, String doctorId,
 			String patientId, String appointmentDate, String appointmentTime) {
 		super();
 		this.appointmentId = appointmentId;

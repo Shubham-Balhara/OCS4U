@@ -1,6 +1,6 @@
 package com.bean;
 
-public class ProfileBean {
+public class Profile {
 
 	private String userId;
 	private String firstName;
@@ -16,12 +16,12 @@ public class ProfileBean {
 	private String emailId;
 	private String password;
 
-	public ProfileBean() {
+	public Profile() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public ProfileBean(String userId, String firstName, String lastName,
+	public Profile(String userId, String firstName, String lastName,
 			String dateOfBirth, String gender, String street, String location,
 			String city, String state, String pincode, String mobileNumber,
 			String emailId, String password) {
