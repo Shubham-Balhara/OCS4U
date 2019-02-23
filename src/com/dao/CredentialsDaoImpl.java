@@ -33,7 +33,7 @@ public class CredentialsDaoImpl implements CredentialsDao {
 
 	@Override
 	public Credentials getCredentialsById(String id) {
-	return (Credentials)sf.getCurrentSession().get(Credentials.class, id);
+		return (Credentials)sf.getCurrentSession().get(Credentials.class, id);
 	}
 
 	@Override
@@ -47,5 +47,4 @@ public class CredentialsDaoImpl implements CredentialsDao {
 		sf.getCurrentSession().update(c);
 		return "success";
 	}
-
 }
