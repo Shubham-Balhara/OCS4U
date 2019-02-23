@@ -33,6 +33,14 @@ public class CredentialsDaoImpl implements CredentialsDao {
 
 	@Override
 	public Credentials getCredentialsById(String id) {
+		/*Session session = sf.getCurrentSession();
+		if(type[0] != null){
+			Query q = session.createQuery("from Credentials c where userId=:id and userType=:type");
+			q.setParameter("id", id);
+			q.setParameter("type", type);
+			List<Credentials> li = q.list();
+			return li.get(0);
+		}*/
 		return (Credentials)sf.getCurrentSession().get(Credentials.class, id);
 	}
 
