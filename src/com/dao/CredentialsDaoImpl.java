@@ -32,7 +32,7 @@ public class CredentialsDaoImpl implements CredentialsDao {
 	}
 
 	@Override
-	public Credentials getCredentialsById(String id) {
+	public Credentials getCredentialsById(String id,String type) {
 		return (Credentials)sf.getCurrentSession().get(Credentials.class, id);
 	}
 
