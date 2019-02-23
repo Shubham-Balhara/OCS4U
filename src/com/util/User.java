@@ -5,6 +5,7 @@ import com.bean.Profile;
 
 public class User {
 	public String login(Credentials credentials) {
+		
 		return "";
 	}
 
