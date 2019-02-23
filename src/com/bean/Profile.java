@@ -1,7 +1,13 @@
 package com.bean;
 
-public class Profile {
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="userprofile")
+public class Profile {
+	@Id
 	private String userId;
 	private String firstName;
 	private String lastName;

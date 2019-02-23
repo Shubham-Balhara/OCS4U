@@ -12,16 +12,16 @@
 <form action="validate" method="post">
 <table>
 <tr><td>UserType:</td><td><select name="userType">
-	<option value="doctor">Doctor</option>
-	<option value="patient" selected="selected">Patient</option>
-	<option value="reporter">Reporter</option>
-	<option value="admin">Admin</option></select>
+	<option value="Doctor">Doctor</option>
+	<option value="Patient" selected="selected">Patient</option>
+	<option value="Reporter">Reporter</option>
+	<option value="Admin">Admin</option></select>
 </td></tr>
 <tr><td>UserId:</td><td><input type="text" name="userId"></td></tr>
 <tr><td>Password:</td><td><input type="password" name="password"></td></tr>
 <tr><td><input type="submit" value="Login"></td></tr>
 </table>
 </form>
-<h5><a href="#">Register</a></h5>
+<h5><a href="/register">Register</a></h5>
 </body>
 </html>

@@ -14,14 +14,16 @@ public class User {
 	CredentialsDao cdao ;
 	@Autowired
 	ProfileDao pdao ;
+	static int index = 0;
 	
 	public String login(Credentials credentials) {
 		Credentials  c = cdao.getCredentialsById(credentials.getUserId()) ;
-	    // if both id & type matches... else return 
 		if(c!=null && (c.getUserType().equals(credentials.getUserType()) ) )
 		{
-			if(c.getPassword().equals(credentials.getPassword()) )
+			if(c.getPassword().equals(credentials.getPassword()) && c.getLoginStatus() == 0 )
 			{
+				c.setLoginStatus(1);
+				cdao.updateCredentials(c);
 				return c.getUserType() ;
 			}
 			else
@@ -34,8 +36,9 @@ public class User {
 
 	public boolean logout(String userId) {
 		Credentials credentials = cdao.getCredentialsById(userId) ;
-		if(credentials.getLoginStatus()==1){
+		if(credentials.getLoginStatus() == 1){
 			credentials.setLoginStatus(0);
+			cdao.updateCredentials(credentials);
 			return true;
 		}
 		return false;
@@ -52,7 +55,23 @@ public class User {
 	}
 
 	public String register(Profile profile) {
-		return pdao.addProfile(profile) ;
+		index++;
+		String id = "P"+profile.getFirstName().charAt(0)+profile.getLastName().charAt(0);
+		if(index<10){
+			id += "00"+index;
+		}else if(index<100){
+			id+="0"+index;
+		}else{
+			id+=index;
+		}
+		profile.setUserId(id);
+		if(pdao.addProfile(profile).equals("success")){
+			Credentials credentials = new Credentials(id, profile.getPassword(), "Patient", 0);
+			cdao.addCredentials(credentials);
+			return "success";
+		}else{
+			return "fail";
+		}
 	}
 	
 }

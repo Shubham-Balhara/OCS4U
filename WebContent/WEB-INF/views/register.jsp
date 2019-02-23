@@ -9,7 +9,7 @@
 <body>
 <h3 align="center">Register</h3>
 <h4 align="center" style="color: red;">${msg }</h4>
-<form action="validate" method="post">
+<form action="addProfile" method="post">
 <table align="center">
 <tr><td>FirstName:</td><td><input type="text" name="firstName"></td></tr>
 <tr><td>LastName:</td><td><input type="text" name="lastName"></td></tr>
@@ -19,9 +19,9 @@
 <tr><td>Location:</td><td><input type="text" name="location"></td></tr>
 <tr><td>City:</td><td><input type="text" name="city"></td></tr>
 <tr><td>State:</td><td><input type="text" name="state"></td></tr>
-<tr><td>PinCode:</td><td><input type="text" name="pinCode"></td></tr>
-<tr><td>Mobile No:</td><td><input type="text" name="mobile"></td></tr>
-<tr><td>Email Id:</td><td><input type="text" name="email"></td></tr>
+<tr><td>PinCode:</td><td><input type="text" name="pincode"></td></tr>
+<tr><td>Mobile No:</td><td><input type="text" name="mobileNumber"></td></tr>
+<tr><td>Email Id:</td><td><input type="text" name="emailId"></td></tr>
 <tr><td>Password:</td><td><input type="password" name="password"></td></tr>
 <tr><td><input type="submit" value="Register"></td></tr>
 </table>

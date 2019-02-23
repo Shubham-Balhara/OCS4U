@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bean.Credentials;
+import com.bean.Patient;
 import com.bean.Profile;
 import com.util.User;
 
@@ -17,6 +18,7 @@ public class MainController {
 	@Autowired
 	User u;
 	
+	/// ---- Login
 	@RequestMapping("/login")
 	public String login(){
 		return "login";
@@ -28,10 +30,13 @@ public class MainController {
 			m.addAttribute("msg","invalid try again");
 			return "login";
 		}else{
+			c.setLoginStatus(1);
 			session.setAttribute("user", c);
 			return "welcome";
 		}
 	}
+	
+	//--------register
 	@RequestMapping("/register")
 	public String register(){
 		return "register";
@@ -46,6 +51,19 @@ public class MainController {
 		else{
 			m.addAttribute("msg", "Register Failed");
 			return "register";
+		}
+	}
+	
+	//-----logout
+	@RequestMapping("/logout")
+	public String logout(HttpSession session,Model m){
+		String userId = ((Credentials)session.getAttribute("user")).getUserId();
+		if(u.logout(userId)){
+			m.addAttribute("msg", "logged out successfully");
+			return "index";
+		}else{
+			m.addAttribute("msg","loggout failed");
+			return "welcome";
 		}
 	}
 }

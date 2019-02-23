@@ -1,6 +1,13 @@
 package com.bean;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="appointments")
 public class Appointments {
+	@Id
 	private String appointmentId;
 	private String doctorId;
 	private String patientId;

@@ -1,6 +1,13 @@
 package com.bean;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="credentials")
 public class Credentials {
+	@Id
 	private String userId;
 	private String password;
 	private String userType;
