@@ -32,6 +32,7 @@ public class CredentialsDaoImpl implements CredentialsDao {
 	}
 
 	@Override
+<<<<<<< HEAD
 	public Credentials getCredentialsById(String id) {
 		/*Session session = sf.getCurrentSession();
 		if(type[0] != null){
@@ -41,6 +42,9 @@ public class CredentialsDaoImpl implements CredentialsDao {
 			List<Credentials> li = q.list();
 			return li.get(0);
 		}*/
+=======
+	public Credentials getCredentialsById(String id,String type) {
+>>>>>>> 4b6dbc4b32ed224f0b3e002404822c42619a811a
 		return (Credentials)sf.getCurrentSession().get(Credentials.class, id);
 	}
 
