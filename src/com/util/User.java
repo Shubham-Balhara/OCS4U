@@ -63,9 +63,10 @@ public class User {
 			id+="0"+index;
 		}else{
 			id+=index;
-		}
+		}System.out.println(id + " - ");
 		profile.setUserId(id);
 		if(pdao.addProfile(profile).equals("success")){
+			System.out.println(id);
 			Credentials credentials = new Credentials(id, profile.getPassword(), "Patient", 0);
 			cdao.addCredentials(credentials);
 			return "success";

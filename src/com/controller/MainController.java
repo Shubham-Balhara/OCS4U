@@ -1,15 +1,21 @@
 package com.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bean.Credentials;
-import com.bean.Patient;
+import com.bean.Doctor;
 import com.bean.Profile;
+import com.bean.Schedule;
+import com.service.PatientService;
+import com.service.ReporterService;
 import com.util.User;
 
 @Controller
@@ -17,6 +23,10 @@ import com.util.User;
 public class MainController {
 	@Autowired
 	User u;
+	@Autowired
+	PatientService patientService;
+	@Autowired
+	ReporterService reporterService;
 	
 	/// ---- Login
 	@RequestMapping("/login")
@@ -65,5 +75,23 @@ public class MainController {
 			m.addAttribute("msg","loggout failed");
 			return "welcome";
 		}
+	}
+	
+	//--------book appointment
+	@RequestMapping("/bookStart")
+	public String bookStart(){
+		return "searchDoctor";
+	}
+	@RequestMapping("/findDoctor")
+	public String findDoctor(@RequestParam("doctorType")String type,Model m){
+		List<Doctor> li = patientService.viewListOfDoctor(type);
+		m.addAttribute("doctors",li);
+		return "doctorResult";
+	}
+	@RequestMapping("/doctorSchedule")
+	public String doctorSchedule(@RequestParam("doctorid")String doctorid,Model m){
+		List<Schedule> schedules = reporterService.getSchedulesByDoctor(doctorid);
+		m.addAttribute("schedules",schedules);
+		return "doctorSchedule";
 	}
 }

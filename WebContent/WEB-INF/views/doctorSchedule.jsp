@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,8 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h4>Index Page</h4>
-<h5>${msg }</h5>
-<a href="../main/bookStart">Book appointment</a>
+<h3>Doctor Schedule Page</h3>
+<c:forEach items="${schedules }" var="schedule">
+<c:out value="${schedule.slots }"></c:out>
+<c:out value="${schedule.scheduleId }"></c:out>
+<c:out value="${schedule.doctorId }"></c:out>
+</c:forEach>
 </body>
 </html>

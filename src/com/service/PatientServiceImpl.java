@@ -3,11 +3,19 @@ package com.service;
 import java.util.List;
 import java.util.Map;
 
+import org.hibernate.engine.jdbc.internal.DDLFormatterImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.bean.Appointments;
 import com.bean.Doctor;
 import com.bean.Patient;
+import com.dao.DoctorDao;
 
+@Service
 public class PatientServiceImpl implements PatientService {
+	@Autowired
+	DoctorDao ddao;
 
 	@Override
 	public String addAilmentDetail(Patient p) {
@@ -27,6 +35,11 @@ public class PatientServiceImpl implements PatientService {
 		return null;
 	}
 
+	@Override
+	public List<Doctor> viewListOfDoctor(String type) {
+		return ddao.getAllDoctorByType(type);
+	}
+	
 	@Override
 	public List<Doctor> viewListOfDoctor(String type, String date) {
 		// TODO Auto-generated method stub

@@ -15,7 +15,7 @@ public class Doctor {
 	private String gender;
 	private String qualification;
 	private String specialization;
-	private String yearsOfExperience;
+	private int yearsOfExperience;
 	private String street;
 	private String location;
 	private String city;
@@ -26,7 +26,7 @@ public class Doctor {
 
 	public Doctor(String doctorName, String dateOfBirth,
 			String dateOfJoining, String gender, String qualification,
-			String specialization, String yearsOfExperience, String street,
+			String specialization, int yearsOfExperience, String street,
 			String location, String city, String state, String pincode,
 			String mobileNumber, String emailId) {
 		super();
@@ -107,11 +107,11 @@ public class Doctor {
 		this.specialization = specialization;
 	}
 
-	public String getYearsOfExperience() {
+	public int getYearsOfExperience() {
 		return yearsOfExperience;
 	}
 
-	public void setYearsOfExperience(String yearsOfExperience) {
+	public void setYearsOfExperience(int yearsOfExperience) {
 		this.yearsOfExperience = yearsOfExperience;
 	}
 
