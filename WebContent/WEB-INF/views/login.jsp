@@ -22,6 +22,6 @@
 <tr><td><input type="submit" value="Login"></td></tr>
 </table>
 </form>
-<h5><a href="/register">Register</a></h5>
+<h5><a href="../main/register">Register</a></h5>
 </body>
 </html>

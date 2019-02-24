@@ -12,19 +12,18 @@ public class Appointments {
 	private String doctorId;
 	private String patientId;
 	private String  appointmentDate ;
-	private String appointmentTime ;
+	private String appointmentSlot ;
 	public Appointments() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Appointments(String appointmentId, String doctorId,
-			String patientId, String appointmentDate, String appointmentTime) {
+	public Appointments(String doctorId,
+			String patientId, String appointmentDate, String appointmentSlot) {
 		super();
-		this.appointmentId = appointmentId;
 		this.doctorId = doctorId;
 		this.patientId = patientId;
 		this.appointmentDate = appointmentDate;
-		this.appointmentTime = appointmentTime;
+		this.appointmentSlot = appointmentSlot;
 	}
 	public String getAppointmentId() {
 		return appointmentId;
@@ -50,18 +49,18 @@ public class Appointments {
 	public void setAppointmentDate(String appointmentDate) {
 		this.appointmentDate = appointmentDate;
 	}
-	public String getAppointmentTime() {
-		return appointmentTime;
+	public String getAppointmentSlot() {
+		return appointmentSlot;
 	}
-	public void setAppointmentTime(String appointmentTime) {
-		this.appointmentTime = appointmentTime;
+	public void setAppointmentSlot(String appointmentSlot) {
+		this.appointmentSlot = appointmentSlot;
 	}
 	@Override
 	public String toString() {
 		return "AppointmentBean [appointmentId=" + appointmentId
 				+ ", doctorId=" + doctorId + ", patientId=" + patientId
-				+ ", appointmentDate=" + appointmentDate + ", appointmentTime="
-				+ appointmentTime + "]";
+				+ ", appointmentDate=" + appointmentDate + ", appointmentSlot="
+				+ appointmentSlot + "]";
 	}
 
 	

@@ -7,8 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h4>Index Page</h4>
-<h5>${msg }</h5>
-<a href="../main/login">Login</a>
+<h3>This is Patient Home Page</h3>
+<a href="../main/logout">Logout</a>
+<a href="../appointment/start">Book Appointment</a>
 </body>
 </html>

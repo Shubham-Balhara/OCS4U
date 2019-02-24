@@ -9,6 +9,7 @@ import javax.persistence.Table;
 public class Patient {
 	@Id
 	private String patientId;
+	private String userId;
 	private String appointmentDate;
 	private String ailmentType;
 	private String ailmentDetails;
@@ -19,10 +20,10 @@ public class Patient {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Patient(String patientId, String appointmentDate,
+	public Patient(String userId, String appointmentDate,
 			String ailmentType, String ailmentDetails, String diagnosisHistory) {
 		super();
-		this.patientId = patientId;
+		this.userId = userId;
 		this.appointmentDate = appointmentDate;
 		this.ailmentType = ailmentType;
 		this.ailmentDetails = ailmentDetails;
@@ -69,11 +70,19 @@ public class Patient {
 		this.diagnosisHistory = diagnosisHistory;
 	}
 
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
 	@Override
 	public String toString() {
 		return "PatientBean [patientId=" + patientId + ", appointmentDate="
 				+ appointmentDate + ", ailmentType=" + ailmentType
-				+ ", ailmentDetails=" + ailmentDetails + ", diagnosisHistory="
+				+ ", ailmentDetails=" + ailmentDetails + ", userId =" + userId + ", diagnosisHistory="
 				+ diagnosisHistory + "]";
 	}
 

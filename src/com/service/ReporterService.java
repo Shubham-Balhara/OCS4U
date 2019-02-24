@@ -2,11 +2,13 @@ package com.service;
 
 import java.util.List;
 
+import com.bean.Appointments;
 import com.bean.Doctor;
-import com.bean.Schedule;
 
 public interface ReporterService {
 	public List<Doctor> viewAllDoctors(String date);
 	public List<Doctor> intimateAdmin(String date,String status);
-	public List<Schedule> getSchedulesByDoctor(String did); 
+	public List<Appointments> getAppointmentByDoctor(String did); 
+	public String addAppointment(Appointments a);
+	public boolean requestAppointment(Appointments a);
 }

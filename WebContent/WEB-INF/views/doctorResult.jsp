@@ -10,7 +10,7 @@
 <body>
 <h4>Search Results:</h4>
 <c:forEach items="${doctors }" var="doctor">
-<c:url value="/main/doctorSchedule" var="url"><c:param name="doctorid" value="${doctor.doctorId }"/></c:url>
+<c:url value="/appointment/doctorSchedule" var="url"><c:param name="doctorid" value="${doctor.doctorId }"/></c:url>
 <h4>${doctor.doctorName }</h4>
 <h5>${doctor.qualification }</h5>
 <a href="${url }">Check Schedule</a>

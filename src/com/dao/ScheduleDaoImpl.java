@@ -19,8 +19,8 @@ public class ScheduleDaoImpl implements ScheduleDao {
 	
 	@Override
 	public String addSchedule(Schedule s) {
-		// TODO Auto-generated method stub
-		return null;
+		sf.getCurrentSession().save(s);
+		return "success";
 	}
 
 	@Override

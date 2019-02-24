@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bean.Credentials;
+import com.bean.Patient;
 import com.bean.Profile;
 import com.dao.CredentialsDao;
+import com.dao.PatientDao;
 import com.dao.ProfileDao;
 @Service
 
@@ -14,6 +16,8 @@ public class User {
 	CredentialsDao cdao ;
 	@Autowired
 	ProfileDao pdao ;
+	@Autowired
+	PatientDao patientdao;
 	static int index = 0;
 	
 	public String login(Credentials credentials) {
@@ -63,13 +67,15 @@ public class User {
 			id+="0"+index;
 		}else{
 			id+=index;
-		}System.out.println(id + " - ");
+		}
 		profile.setUserId(id);
 		if(pdao.addProfile(profile).equals("success")){
-			System.out.println(id);
 			Credentials credentials = new Credentials(id, profile.getPassword(), "Patient", 0);
 			cdao.addCredentials(credentials);
-			return "success";
+			Patient patient = new Patient(id, null, null, null, null);
+			patient.setPatientId("TM"+id);
+			patientdao.addProfile(patient);
+			return id;
 		}else{
 			return "fail";
 		}

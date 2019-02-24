@@ -7,12 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3>Logged in</h3>
-<h4 align="center"><a href="../main/logout">Logout</a></h4>
-<h5 align="center">${msg }</h5>
-<h5>${ user.userId}</h5>
-<h5>${ user.userType }</h5>
-<h5>${ user.password }</h5>
-<h5>${ user.loginStatus }</h5>
+<h3>Schedule Booked</h3>
+<a href="../main/logout">Home</a>
 </body>
 </html>

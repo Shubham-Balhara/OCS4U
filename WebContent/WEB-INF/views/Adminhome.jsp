@@ -7,8 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h4>Index Page</h4>
-<h5>${msg }</h5>
-<a href="../main/login">Login</a>
+<h3>This is admin home page</h3>
+<a href="../main/logout">Logout</a>
 </body>
 </html>

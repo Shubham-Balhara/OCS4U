@@ -11,8 +11,8 @@
 <form action="findDoctor" method="post">
 <table>
 <tr><td><select name="doctorType">
-	<option value="A">A</option>
-	<option value="B" selected="selected">B</option>
+	<option value="A" selected="selected">A</option>
+	<option value="B">B</option>
 	<option value="C">C</option>
 	<option value="D">D</option>
 	<option value="E">E</option></select>
