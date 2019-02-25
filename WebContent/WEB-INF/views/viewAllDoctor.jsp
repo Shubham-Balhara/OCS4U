@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1 align="center">===== View ALL Doctors =======</h1>
-<c:forEach items=${doctorList} var="e" >
+<c:forEach items="${doctorList}" var="e" >
   <c:out value="${e.doctorName}"/>
    <c:out value="${e.specialization}"/>
    <c:out value="${e.yearsOfExperience}"/>

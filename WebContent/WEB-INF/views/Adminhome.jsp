@@ -9,8 +9,8 @@
 <body>
 <h1>This is admin home page</h1> <hr>
 <a href="../main/logout">Logout</a>
-<a href="../admin/start">Add Doctor</a>
-<a href="../admin/view">View All Doctor</a>
+<a href="../admin/add">Add Doctor</a>
+<a href="../admin/viewAll">View All Doctor</a>
 
 </body>
 </html>

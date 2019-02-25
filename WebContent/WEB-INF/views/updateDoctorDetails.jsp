@@ -9,6 +9,7 @@
 <body>
 <h3 align="center">====Update DOCTOR Details ====</h3><hr>
 <form action="updateDoctorinDB" method="post">
+<input type="text" name="doctorId" value="${doctor.doctorId }" style="visibility: hidden;">
 <table align="center">
 <tr><td>Doctor Name:</td><td><input type="text" name="doctorName" value="${doctor.doctorName}"></td></tr>
 <tr><td>Date Of Birth:</td><td><input type="date" name="dateOfBirth" value="${doctor.dateOfBirth}"></td></tr>

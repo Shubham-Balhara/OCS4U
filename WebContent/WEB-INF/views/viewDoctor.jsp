@@ -11,23 +11,23 @@
 <body>
 	<h3 align="center">=====doctor details =====</h3>
 	<hr>
-	<c:out value="${e.doctorName}" />
-	<c:out value="${e.doctorId}" />
-	<c:out value="${e.specialization}" />
-	<c:out value="${e.yearsOfExperience}" />
-	<c:out value="${e.mobileNumber}" />
-	<c:out value="${e.dateOfBirth}" />
-	<c:out value="${e.dateOfJoining}" />
-	<c:out value="${e.gender}" />
-	<c:out value="${e.street}" />
-	<c:out value="${e.location}" />
-	<c:out value="${e.city}" />
-	<c:out value="${e.state}" />
-	<c:out value="${e.pincode}" />
-	<c:out value="${e.mobileNumber}" />
-	<c:out value="${e.emailId}" />
+	<c:out value="${e.doctorName}" /><br/>
+	<c:out value="${e.doctorId}" /><br/>
+	<c:out value="${e.specialization}" /><br/>
+	<c:out value="${e.yearsOfExperience}" /><br/>
+	<c:out value="${e.mobileNumber}" /><br/>
+	<c:out value="${e.dateOfBirth}" /><br/>
+	<c:out value="${e.dateOfJoining}" /><br/>
+	<c:out value="${e.gender}" /><br/>
+	<c:out value="${e.street}" /><br/>
+	<c:out value="${e.location}" /><br/>
+	<c:out value="${e.city}" /><br/>
+	<c:out value="${e.state}" /><br/>
+	<c:out value="${e.pincode}" /><br/>
+	<c:out value="${e.mobileNumber}" /><br/>
+	<c:out value="${e.emailId}" /><br/>
 <hr>
-<a href="../admin/updateDoctor/${e.doctorId}">Update Doctor details</a> | 
-<a href="../admin/deleteDoctor/${e.doctorId}">delete Doctor</a>
+<a href="../updateDoctor/${e.doctorId}">Update Doctor details</a> | 
+<a href="../deleteDoctor/${e.doctorId}">delete Doctor</a>
 </body>
 </html>

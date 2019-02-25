@@ -8,7 +8,7 @@
 </head>
 <body>
 <h3>=== ${doctor.doctorId} == Deleted successfully====</h3>
-<a href="/admin/view">admin Home</a>
+<a href="../home">admin Home</a>
 
 </body>
 </html>

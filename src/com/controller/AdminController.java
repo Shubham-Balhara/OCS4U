@@ -23,6 +23,12 @@ public class AdminController {
 	public String addDoctor() {
 		return "addDoctor";
 	}
+	
+	//-------Admin home
+	@RequestMapping("/home")
+	public String home(){
+		return "Adminhome";
+	}
 
 	@RequestMapping("/addDoctor")
 	public String addDoctorInDb(Doctor d, Model m) {
@@ -47,7 +53,7 @@ public class AdminController {
 	@RequestMapping("/doctor/{doctorId}")
 	public String viewDetails(@PathVariable("doctorId") String doctorId, Model m) {
 		Doctor doctor = administratorService.getDoctorById(doctorId);
-		m.addAttribute(doctor);
+		m.addAttribute("e",doctor);
 		return "viewDoctor";
 	}
 
@@ -55,14 +61,15 @@ public class AdminController {
 	@RequestMapping("/updateDoctor/{doctorId}")
 	public String updateDoctorStart(@PathVariable("doctorId") String doctorId, Model m) {
 		Doctor doctor = administratorService.getDoctorById(doctorId);
-		m.addAttribute(doctor);
-     	return "updateDoctor";
+		m.addAttribute("doctor",doctor);
+     	return "updateDoctorDetails";
 	}
-	@RequestMapping("/updateDoctorinDB")
+	@RequestMapping("/updateDoctor/updateDoctorinDB")
 	public String updateDoctorinDB(Doctor doctor ,Model m) {
 		administratorService.updateDoctor(doctor);
+		System.out.println(doctor);
 		m.addAttribute("msg","doctor updated sucessfully"+ doctor.getDoctorId() ) ;
-		return "Doctorupdated";
+		return "doctorUpdated";
 	}
 	
 	
@@ -70,7 +77,7 @@ public class AdminController {
 		@RequestMapping("/deleteDoctor/{doctorId}")
 		public String deleteDoctor(@PathVariable("doctorId") String doctorId, Model m) {
 			Doctor doctor = administratorService.getDoctorById(doctorId);
-			m.addAttribute(doctor);	
+			m.addAttribute("doctor",doctor);	
 			String result = administratorService.deleteDoctor(doctor) ;
 		
 	     	return "doctorDeleted";
