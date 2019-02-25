@@ -43,6 +43,7 @@ public class ReporterServiceImpl implements ReporterService {
 			id+=index;
 		}
 		a.setAppointmentId(id);
+		//System.out.println(a.getPatientId()+" patient id in reporterservice");
 		return adao.addAppointment(a);
 	}
 	
