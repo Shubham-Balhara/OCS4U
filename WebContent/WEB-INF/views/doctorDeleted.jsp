@@ -4,13 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>delete</title>
 </head>
 <body>
-<h1>This is admin home page</h1> <hr>
-<a href="../main/logout">Logout</a>
-<a href="../admin/start">Add Doctor</a>
-<a href="../admin/view">View All Doctor</a>
+<h3>=== ${doctor.doctorId} == Deleted successfully====</h3>
+<a href="/admin/view">admin Home</a>
 
 </body>
 </html>

@@ -24,35 +24,39 @@ public class AppointmentController {
 	PatientService patientService;
 	@Autowired
 	ReporterService reporterService;
-	
+
 	@RequestMapping("/start")
-	public String bookStart(){
+	public String bookStart() {
 		return "searchDoctor";
 	}
+
 	@RequestMapping("/findDoctor")
-	public String findDoctor(@RequestParam("doctorType")String type,Model m){
+	public String findDoctor(@RequestParam("doctorType") String type, Model m) {
 		List<Doctor> li = patientService.viewListOfDoctor(type);
-		m.addAttribute("doctors",li);
+		m.addAttribute("doctors", li);
 		return "doctorResult";
 	}
+
 	@RequestMapping("/doctorSchedule")
-	public String doctorSchedule(@RequestParam("doctorid")String doctorId,Model m){
-		/*List<Schedule> schedules = reporterService.getSchedulesByDoctor(doctorid);*/
-		//m.addAttribute("schedules",schedules);
+	public String doctorSchedule(@RequestParam("doctorid") String doctorId, Model m) {
+		/* List<Schedule> schedules = reporterService.getSchedulesByDoctor(doctorid); */
+		// m.addAttribute("schedules",schedules);
 		m.addAttribute("doctorId", doctorId);
 		return "doctorSchedule";
 	}
+
 	@RequestMapping("/checkSchedule")
-	public String checkSchedule(@RequestParam("doctorId")String doctorId, @RequestParam("date")String date,@RequestParam("slots")String slots, Model m,HttpSession session){
+	public String checkSchedule(@RequestParam("doctorId") String doctorId, @RequestParam("date") String date,
+			@RequestParam("slots") String slots, Model m, HttpSession session) {
 		boolean flag = false;
-		String userId = ((Credentials)session.getAttribute("user")).getUserId();
-		Appointments appointments = new Appointments(doctorId, "TM"+userId, date, slots);
+		String userId = ((Credentials) session.getAttribute("user")).getUserId();
+		Appointments appointments = new Appointments(doctorId, "TM" + userId, date, slots);
 		flag = reporterService.requestAppointment(appointments);
-		if(flag == false){
+		if (flag == false) {
 			m.addAttribute("doctorId", doctorId);
 			m.addAttribute("msg", "Slot is already booked");
 			return "doctorSchedule";
-		}else{
+		} else {
 			return "appointmentBooked";
 		}
 	}

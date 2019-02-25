@@ -55,4 +55,12 @@ public class AdministratorServiceImpl implements AdministratorService {
 		
 		return null;
 	}
+
+	@Override
+	public Doctor getDoctorById(String doctorId) {
+		return ddao.getDoctorById(doctorId) ;
+		
+	}
+
 }
+
