@@ -5,10 +5,14 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bean.Credentials;
+import com.bean.Doctor;
 import com.bean.Profile;
+import com.dao.CredentialsDao;
 import com.util.User;
 
 @Controller
@@ -16,6 +20,9 @@ import com.util.User;
 public class MainController {
 	@Autowired
 	User u;
+	@Autowired
+	CredentialsDao credentialsDao ;
+	
 	
 	//-------home page
 	@RequestMapping("/index")
@@ -70,4 +77,31 @@ public class MainController {
 			return "login";
 		}
 	}
+	
+	//======= UPDATE PASSWORD 
+	@RequestMapping("/update/{userId}")
+	public String update(@PathVariable("userId") String userId, Model m)
+	{
+		m.addAttribute("userId",userId) ;
+		System.out.println("id--" + userId );
+	   	return "updatePassword" ;
+	}
+	@RequestMapping("/update/updatePasswordInDB")
+	public String updatePassword(@RequestParam("newPassword") String newPassword ,@RequestParam("userId") String userId, Model m,HttpSession session)
+	{
+		//String id =((Credentials)session.getAttribute("user")).getUserId() ;
+		
+		System.out.println("userwali id --" + userId );
+		
+              Credentials credentials = credentialsDao.getCredentialsById(userId);
+              System.out.println("cre=-" + credentials);
+              String msg = u.changePassword(credentials, newPassword) ;
+              m.addAttribute("msg" ,msg) ;
+            System.out.println("msggg--" + msg );
+              if(msg.equals("success"))
+            	 return "passwordUpdated" ;
+             else
+            	 return "upadatePassword" ;
+	}
+	
 }

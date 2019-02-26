@@ -47,9 +47,12 @@ public class User {
 		}
 		return false;
 	}
-
+  //=========== Update Password
 	public String changePassword(Credentials credentials, String newPassword) {
 		Credentials  c = cdao.getCredentialsById(credentials.getUserId()) ;
+		System.out.println("in chnge c="+ c.getPassword());
+		System.out.println("in chnge credentials="+ credentials.getPassword());
+		System.out.println("byebye");
 		if(c.getPassword().equals(credentials.getPassword()) )
 		{
 			credentials.setPassword(newPassword);

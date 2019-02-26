@@ -4,13 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>password updated</title>
 </head>
 <body>
-<h3>This is Patient Home Page</h3>
-<a href="../main/logout">Logout</a>
-<a href="../appointment/start">Book Appointment</a>
-<a href="../patient/apOfP/${user.userId }">View Appointments of Patient</a>
-<a href="../patient/apOfD/${user.userId }">View Appointments of Doctor</a>
+<h4 align="center" style="color: red;">${msg}</h4><br>
+
+<a href="/main/logout">Logout</a>
 </body>
 </html>

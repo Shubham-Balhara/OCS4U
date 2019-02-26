@@ -11,20 +11,20 @@
 <h4 align="center" style="color: red;">${msg }</h4>
 <form action="addDoctor" method="post">
 <table align="center">
-<tr><td>Doctor Name:</td><td><input type="text" name="doctorName"></td></tr>
-<tr><td>Date Of Birth:</td><td><input type="date" name="dateOfBirth"></td></tr>
-<tr><td>Date Of Joining:</td><td><input type="date" name="dateOfJoining"></td></tr>
+<tr><td>Doctor Name:</td><td><input type="text" name="doctorName" required></td></tr>
+<tr><td>Date Of Birth:</td><td><input type="date" name="dateOfBirth" required></td></tr>
+<tr><td>Date Of Joining:</td><td><input type="date" name="dateOfJoining" required></td></tr>
 <tr><td>Gender:</td><td><input type="radio" name="gender" value="male">Male</td><td><input type="radio" name="gender" value="female">Female</td></tr>
-<tr><td>Qualification :</td><td><input type="text" name="qualification"></td></tr>
-<tr><td>Specialization :</td><td><input type="text" name="specialization"></td></tr>
-<tr><td>Years of Experience :</td><td><input type="text" name="yearsOfExperience"></td></tr>
-<tr><td>Street:</td><td><input type="text" name="street"></td></tr>
-<tr><td>Location:</td><td><input type="text" name="location"></td></tr>
-<tr><td>City:</td><td><input type="text" name="city"></td></tr>
-<tr><td>State:</td><td><input type="text" name="state"></td></tr>
-<tr><td>PinCode:</td><td><input type="text" name="pincode"></td></tr>
-<tr><td>Mobile No:</td><td><input type="text" name="mobileNumber"></td></tr>
-<tr><td>Email Id:</td><td><input type="text" name="emailId"></td></tr>
+<tr><td>Qualification :</td><td><input type="text" name="qualification" required></td></tr>
+<tr><td>Specialization :</td><td><input type="text" name="specialization" required></td></tr>
+<tr><td>Years of Experience :</td><td><input type="text" name="yearsOfExperience" required></td></tr>
+<tr><td>Street:</td><td><input type="text" name="street" required></td></tr>
+<tr><td>Location:</td><td><input type="text" name="location" required></td></tr>
+<tr><td>City:</td><td><input type="text" name="city" required></td></tr>
+<tr><td>State:</td><td><input type="text" name="state" required></td></tr>
+<tr><td>PinCode:</td><td><input type="text" name="pincode" required></td></tr>
+<tr><td>Mobile No:</td><td><input type="text" name="mobileNumber" required></td></tr>
+<tr><td>Email Id:</td><td><input type="text" name="emailId" required></td></tr>
 <tr><td><input type="submit" value="ADD DOCTOR"></td></tr>
 </table>
 </form>

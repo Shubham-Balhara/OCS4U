@@ -29,5 +29,6 @@
 <hr>
 <a href="../updateDoctor/${e.doctorId}">Update Doctor details</a> | 
 <a href="../deleteDoctor/${e.doctorId}">delete Doctor</a>
+<a href="../patient/apOfD/${user.userId }">View Appointments of Doctor</a>
 </body>
 </html>
