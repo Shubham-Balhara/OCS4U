@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bean.Appointments;
-import com.bean.Schedule;
 
 @Repository
 @Transactional
@@ -36,7 +35,7 @@ public class AppointmentDaoImpl implements AppointmentDao {
 	@Override
 	public List<Appointments> getAppointmentsByPatient(String patientId) {
 		Session session = sf.getCurrentSession();
-		Query q = session.createQuery("from Schedule where patientId=:pid");
+		Query q = session.createQuery("from Appointments where patientId=:pid");
 		q.setParameter("pid", patientId);
 		List<Appointments> li = q.list();
 		return li;
