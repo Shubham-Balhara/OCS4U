@@ -10,5 +10,5 @@ public interface ReporterService {
 	public List<Doctor> intimateAdmin(String date,String status);
 	public List<Appointments> getAppointmentByDoctor(String did); 
 	public String addAppointment(Appointments a);
-	public boolean requestAppointment(Appointments a);
+	public List<Appointments> requestAppointment(String doctorId, String userId);
 }
