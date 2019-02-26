@@ -8,6 +8,6 @@
 </head>
 <body>
 <h3>=====  ${msg} =======</h3>
-<a href="/admin/home">Admin Home</a>
+<a href="../home">Admin Home</a>
 </body>
 </html>
