@@ -8,9 +8,9 @@
 </head>
 <body>
 <h3>This is Patient Home Page</h3>
-<a href="../main/logout">Logout</a>
-<a href="../appointment/start">Book Appointment</a>
-<a href="../patient/apOfP/${user.userId }">View Appointments of Patient</a>
-<a href="../patient/apOfD/${user.userId }">View Appointments of Doctor</a>
+<a href="../main/logout">Logout</a> | 
+<a href="../appointment/start">Book Appointment</a> | 
+<a href="../patient/apOfP">View Appointments of Patient</a> |
+<a href="../main/update">Update Password</a>
 </body>
 </html>

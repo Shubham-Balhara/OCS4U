@@ -9,12 +9,15 @@ import org.springframework.stereotype.Service;
 import com.bean.Appointments;
 import com.bean.Doctor;
 import com.bean.Patient;
+import com.dao.AppointmentDao;
 import com.dao.DoctorDao;
 
 @Service
 public class AdministratorServiceImpl implements AdministratorService {
 	@Autowired
 	DoctorDao ddao;
+	@Autowired
+	AppointmentDao appointmentDao;
 	static int index = 0;
 	
 	public String addDoctor(Doctor d){
@@ -60,6 +63,11 @@ public class AdministratorServiceImpl implements AdministratorService {
 	public Doctor getDoctorById(String doctorId) {
 		return ddao.getDoctorById(doctorId) ;
 		
+	}
+
+	@Override
+	public List<Appointments> getAppointmentsByDoctorId(String doctorId) {
+		return appointmentDao.getAppointmentsByDoctor(doctorId);
 	}
 
 }

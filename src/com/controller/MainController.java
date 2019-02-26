@@ -79,29 +79,20 @@ public class MainController {
 	}
 	
 	//======= UPDATE PASSWORD 
-	@RequestMapping("/update/{userId}")
-	public String update(@PathVariable("userId") String userId, Model m)
+	@RequestMapping("/update")
+	public String update()
 	{
-		m.addAttribute("userId",userId) ;
-		System.out.println("id--" + userId );
 	   	return "updatePassword" ;
 	}
-	@RequestMapping("/update/updatePasswordInDB")
-	public String updatePassword(@RequestParam("newPassword") String newPassword ,@RequestParam("userId") String userId, Model m,HttpSession session)
+	@RequestMapping("/updatePasswordInDB")
+	public String updatePassword(@RequestParam("password")String oldPassword, @RequestParam("newPassword") String newPassword, Model m,HttpSession session)
 	{
-		//String id =((Credentials)session.getAttribute("user")).getUserId() ;
-		
-		System.out.println("userwali id --" + userId );
-		
-              Credentials credentials = credentialsDao.getCredentialsById(userId);
-              System.out.println("cre=-" + credentials);
-              String msg = u.changePassword(credentials, newPassword) ;
-              m.addAttribute("msg" ,msg) ;
-            System.out.println("msggg--" + msg );
-              if(msg.equals("success"))
-            	 return "passwordUpdated" ;
-             else
-            	 return "upadatePassword" ;
+          String msg = u.changePassword(((Credentials)session.getAttribute("user")).getUserId(), oldPassword, newPassword) ;
+          m.addAttribute("msg" ,msg) ;
+         if(msg.equals("success"))
+        	 return "passwordUpdated" ;
+         else
+        	 return "updatePassword" ;
 	}
 	
 }

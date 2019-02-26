@@ -11,7 +11,7 @@
 <a href="../main/logout">Logout</a>
 <a href="../admin/add">Add Doctor</a>
 <a href="../admin/viewAll">View All Doctor</a>
-<a href="../main/update/${c.userId}">Update Password</a>
+<a href="../main/update">Update Password</a>
 
 </body>
 </html>

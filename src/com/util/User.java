@@ -48,15 +48,12 @@ public class User {
 		return false;
 	}
   //=========== Update Password
-	public String changePassword(Credentials credentials, String newPassword) {
-		Credentials  c = cdao.getCredentialsById(credentials.getUserId()) ;
-		System.out.println("in chnge c="+ c.getPassword());
-		System.out.println("in chnge credentials="+ credentials.getPassword());
-		System.out.println("byebye");
-		if(c.getPassword().equals(credentials.getPassword()) )
+	public String changePassword(String userId,String oldPassword, String newPassword) {
+		Credentials  c = cdao.getCredentialsById(userId) ;
+		if(c.getPassword().equals(oldPassword) )
 		{
-			credentials.setPassword(newPassword);
-		 return cdao.updateCredentials(credentials) ;  
+			c.setPassword(newPassword);
+		 return cdao.updateCredentials(c) ;  
 		}
 		return "invalid";
 	}

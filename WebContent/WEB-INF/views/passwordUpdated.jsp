@@ -9,6 +9,6 @@
 <body>
 <h4 align="center" style="color: red;">${msg}</h4><br>
 
-<a href="/main/logout">Logout</a>
+<a href="../main/logout">Logout</a>
 </body>
 </html>

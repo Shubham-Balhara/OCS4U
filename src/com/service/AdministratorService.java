@@ -15,4 +15,5 @@ public interface AdministratorService {
 	public List<Doctor> suggestDoctor(Patient p,String date);
 	public Map<Patient, Appointments>viewPatientByDate(String appointmentdate);
 	public Doctor getDoctorById(String doctorId ) ;
+	public List<Appointments> getAppointmentsByDoctorId(String doctorId);
 }

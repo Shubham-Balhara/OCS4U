@@ -22,11 +22,12 @@ var check = function() {
 <h1 align="center">===== UPDATE PASSWORD ===== </h1> <hr>
 <h4 align="center" style="color: red;">${msg}</h4><br>
 <form action="updatePasswordInDB" >
+<input type="text" name="userId" value="${userId}" style="visibility: hidden;"/>
 <table align="center">
 <tr><td>Old Password : </td><td><input type="password" name="password"  required/></td></tr>
 <tr><td>New Password : </td><td><input type="password"  id="password" name="newPassword" onkeyup='check();'  required/></td></tr>
 <tr><td>Re-Enter New Password : </td><td><input type="password" name="confirmPassword" id="confirmPassword" onkeyup='check();' required/>  <span id='message'></span></td></tr>
-<tr><td><input type="submit" value="Update"/></td><td style="visibility: hidden;"><input type="text" name="userId" value="${userId}" required/></td></tr>
+<tr><td><input type="submit" value="Update"/></td></tr>
 </table>
 </form>
 <hr>

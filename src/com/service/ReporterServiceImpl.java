@@ -23,7 +23,7 @@ public class ReporterServiceImpl implements ReporterService {
 	AppointmentDao adao;
 	@Autowired
 	ScheduleDao scheduleDao;
-	static int index = 3;
+	static int index = 5;
 	
 	@Override
 	public List<Doctor> viewAllDoctors(String date) {
