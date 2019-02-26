@@ -38,26 +38,18 @@ public class AppointmentController {
 	}
 
 	@RequestMapping("/doctorSchedule")
-	public String doctorSchedule(@RequestParam("doctorid") String doctorId, Model m) {
-		/* List<Schedule> schedules = reporterService.getSchedulesByDoctor(doctorid); */
-		// m.addAttribute("schedules",schedules);
-		m.addAttribute("doctorId", doctorId);
+	public String doctorSchedule(@RequestParam("doctorId") String doctorId, Model m, HttpSession session) {
+		String userId = ((Credentials) session.getAttribute("user")).getUserId();
+		List<Appointments> appointments = reporterService.requestAppointment(doctorId,userId);
+		m.addAttribute("appointments", appointments);
 		return "doctorSchedule";
 	}
 
-	@RequestMapping("/checkSchedule")
-	public String checkSchedule(@RequestParam("doctorId") String doctorId, @RequestParam("date") String date,
-			@RequestParam("slots") String slots, Model m, HttpSession session) {
-		boolean flag = false;
-		String userId = ((Credentials) session.getAttribute("user")).getUserId();
-		Appointments appointments = new Appointments(doctorId, "TM" + userId, date, slots);
-		flag = reporterService.requestAppointment(appointments);
-		if (flag == false) {
-			m.addAttribute("doctorId", doctorId);
-			m.addAttribute("msg", "Slot is already booked");
-			return "doctorSchedule";
-		} else {
-			return "appointmentBooked";
-		}
+	@RequestMapping("/bookSchedule")
+	public String checkSchedule(Appointments appointments, Model m) {
+		reporterService.addAppointment(appointments);
+		m.addAttribute("msg", "appointment Booked Successfully");
+		m.addAttribute("appointments", appointments);
+		return "appointmentBooked";
 	}
 }

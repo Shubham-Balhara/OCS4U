@@ -7,7 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3>Schedule Booked</h3>
+<h3>Appointment Booked</h3>
 <a href="../main/logout">Home</a>
+<h4>Details:</h4>
+<c:forEach items="${appointments}" var="appointment">
+<c:out value="${appointment.doctorId }"/><br/>
+<c:out value="${appointment.patientId }"/><br/>
+<c:out value="${appointment.appointmentDate }"/><br/>
+<c:out value="${appointment.appointmentSlot }"/><br/>
+</c:forEach>
 </body>
 </html>
