@@ -13,8 +13,11 @@ import org.springframework.stereotype.Service;
 
 import com.bean.Appointments;
 import com.bean.Doctor;
+import com.bean.Leave;
 import com.bean.Schedule;
 import com.dao.AppointmentDao;
+import com.dao.DoctorDao;
+import com.dao.LeaveDao;
 import com.dao.ScheduleDao;
 
 @Service
@@ -23,7 +26,12 @@ public class ReporterServiceImpl implements ReporterService {
 	AppointmentDao adao;
 	@Autowired
 	ScheduleDao scheduleDao;
+	@Autowired
+	DoctorDao doctorDao;
+	@Autowired
+	LeaveDao leaveDao;
 	static int index = 5;
+	static int lindex = 1;
 	
 	@Override
 	public List<Doctor> viewAllDoctors(String date) {
@@ -80,7 +88,7 @@ public class ReporterServiceImpl implements ReporterService {
 		}
 		
 		List<Appointments> appointments = new ArrayList<Appointments>();
-		for(Schedule s:schedules){
+		for(Schedule s:safeSchedules){
 			cal.setTime(new Date());
 			int day = mp.get(s.getAvailableDays());
 			int gap = day - cal.get(Calendar.DAY_OF_WEEK);
@@ -104,6 +112,32 @@ public class ReporterServiceImpl implements ReporterService {
 		
 		return availableAppointments;
 		
+	}
+
+	@Override
+	public List<Doctor> getAllDoctors() {
+		return doctorDao.getAllDoctor();
+	}
+
+	@Override
+	public String addLeave(Leave leave) {
+		lindex++;
+		String id = "LEV";
+		if(lindex<10){
+			id += "00"+lindex;
+		}else if(lindex<100){
+			id+="0"+lindex;
+		}else{
+			id+=lindex;
+		}
+		leave.setLeaveId(id);
+		leave.setStatus(0);
+		return leaveDao.addLeave(leave);
+	}
+
+	@Override
+	public List<Leave> getLeaveByDoctor(String doctorId) {
+		return leaveDao.getAllLeaveByDoctor(doctorId);
 	}
 
 }
