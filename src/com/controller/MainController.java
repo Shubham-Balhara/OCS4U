@@ -1,5 +1,7 @@
 package com.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +11,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.bean.Appointments;
 import com.bean.Credentials;
 import com.bean.Doctor;
 import com.bean.Profile;
 import com.dao.CredentialsDao;
+import com.service.PatientService;
 import com.util.User;
 
 @Controller
@@ -20,6 +24,8 @@ import com.util.User;
 public class MainController {
 	@Autowired
 	User u;
+	@Autowired
+	PatientService patientService;
 	@Autowired
 	CredentialsDao credentialsDao ;
 	
@@ -30,7 +36,9 @@ public class MainController {
 		return "index";
 	}
 	@RequestMapping("/home")
-	public String home(HttpSession session){
+	public String home(Model m,HttpSession session){
+		List<Appointments> li = patientService.getAppointmentsById("TM"+((Credentials)session.getAttribute("user")).getUserId());
+		m.addAttribute("appointmentList", li);
 		return "home";
 	}
 	
@@ -47,7 +55,7 @@ public class MainController {
 			return "login";
 		}else{
 			session.setAttribute("user", result);
-			return "home";
+			return "redirect:home";
 		}
 	}
 	
