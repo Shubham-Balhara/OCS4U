@@ -31,7 +31,7 @@ public class MainController {
 	}
 	@RequestMapping("/home")
 	public String home(HttpSession session){
-		return ((Credentials)session.getAttribute("user")).getUserType()+"home";
+		return "home";
 	}
 	
 	/// ---- Login
@@ -47,7 +47,7 @@ public class MainController {
 			return "login";
 		}else{
 			session.setAttribute("user", result);
-			return result.getUserType()+"home";
+			return "home";
 		}
 	}
 	

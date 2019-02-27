@@ -8,9 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%-- <%@include file="base.jsp" %> --%>
 <c:import url="../views/base.jsp" />
-<h4>Index Page</h4>
-<h5>${msg }</h5>
+<h4>Home Page</h4>
 </body>
 </html>

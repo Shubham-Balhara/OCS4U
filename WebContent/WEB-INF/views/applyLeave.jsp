@@ -22,5 +22,6 @@
 <tr><td><input type="submit" value="Add"></td></tr>
 </table>
 </form>
+<a href="../reporter/home">Home</a>
 </body>
 </html>

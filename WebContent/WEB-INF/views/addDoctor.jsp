@@ -102,7 +102,7 @@ body {
 <h4 align="center" style="color: red;">${msg }</h4>
 
 <div class="container">
-            <form class="form-horizontal" role="form" action="addProfile" method="post">
+            <form class="form-horizontal" role="form" action="addDoctor" method="post">
                 <h2>DOCTOR Registration</h2>
                 <div class="form-group">
                     <label for="doctorName" class="col-sm-3 control-label">Doctor Name</label>

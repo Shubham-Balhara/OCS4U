@@ -28,7 +28,7 @@ public class PatientController {
 	// -------Patienthome
 	@RequestMapping("/home")
 	public String home() {
-		return "Patienthome";
+		return "home";
 	}
 
 	//======= view AppointMents 
