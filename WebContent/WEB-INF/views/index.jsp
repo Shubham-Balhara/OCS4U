@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -21,8 +22,8 @@
 	<div class="menu">
 		<div class="container-fluid">
 			<div class="row">
-
-				<div class="navbar-header">
+				
+				<%-- <div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse"
 						data-target=".navbar-collapse">
 						<i class="fa fa-bars" aria-hidden="true"></i>
@@ -30,7 +31,8 @@
 				</div>
 				<div class="menu-nav">
 					<div class="navbar-collapse collapse"><h3 style="color: white;">${msg }</h3></div>
-				</div>
+				</div> --%>
+				
 				<div class="container">
 					<div class="row">
 						<div class="hero-msj">
@@ -38,8 +40,8 @@
 								Now, you can book your <br>appointment Online!
 							</h1>
 							<p>Online Clinic System</p>
-							<a href="../main/login" class="btn btn-green btn-small"
-								role="button">LOGIN</a>
+							<a href="../main/register" class="btn btn-green btn-small"
+								role="button">REGISTER</a>
 						</div>
 					</div>
 				</div>
@@ -113,5 +115,6 @@
 	<script
 		src="https://ajax.cloudflare.com/cdn-cgi/scripts/cb7744ae/cloudflare-static/rocket-loader.min.js"
 		data-cf-settings="7605f72a094e5c7798c34de6-|49" defer=""></script>
+
 </body>
 </html>

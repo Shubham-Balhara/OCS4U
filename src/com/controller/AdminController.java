@@ -18,16 +18,16 @@ public class AdminController {
 	@Autowired
 	AdministratorService administratorService;
 
+	//-------Admin home
+		@RequestMapping("/home")
+		public String home(){
+			return "home";
+		}
+		
 	// ========= ADD DOCTOR ==========
 	@RequestMapping("/add")
 	public String addDoctor() {
 		return "addDoctor";
-	}
-	
-	//-------Admin home
-	@RequestMapping("/home")
-	public String home(){
-		return "Adminhome";
 	}
 
 	@RequestMapping("/addDoctor")

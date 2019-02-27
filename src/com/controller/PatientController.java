@@ -27,8 +27,11 @@ public class PatientController {
 
 	// -------Patienthome
 	@RequestMapping("/home")
-	public String home() {
-		return "Patienthome";
+	public String home(Model m,HttpSession session) {
+		List<Appointments> li = patientService.getAppointmentsById("TM"+((Credentials)session.getAttribute("user")).getUserId());
+		System.out.println(li);
+		m.addAttribute("appointmentList", li);
+		return "home";
 	}
 
 	//======= view AppointMents 

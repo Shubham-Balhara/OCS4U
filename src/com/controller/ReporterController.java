@@ -22,7 +22,7 @@ public class ReporterController {
 	
 	@RequestMapping("/home")
 	public String home(HttpSession session){
-		return ((Credentials)session.getAttribute("user")).getUserType()+"home";
+		return "home";
 	}
 	
 	@RequestMapping("/allDoctors")
