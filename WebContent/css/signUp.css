@@ -1,9 +1,10 @@
 @charset "ISO-8859-1";
 <style type="text/css">
 body {
-     background: url('https://static-communitytable.parade.com/wp-content/uploads/2014/03/rethink-target-heart-rate-number-ftr.jpg') fixed;
+     background: url("/OCS/images/pulseRate.jpg") fixed;
     background-size: cover;
 }
+
 
 *[role="form"] {
     max-width: 530px;
