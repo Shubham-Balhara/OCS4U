@@ -18,24 +18,19 @@ public class User {
 	ProfileDao pdao ;
 	@Autowired
 	PatientDao patientdao;
+	
 	static int index = 0;
 	
-	public String login(Credentials credentials) {
-		Credentials  c = cdao.getCredentialsById(credentials.getUserId()) ;
-		if(c!=null && (c.getUserType().equals(credentials.getUserType()) ) )
-		{
-			if(c.getPassword().equals(credentials.getPassword()) && c.getLoginStatus() == 0 )
-			{
-				c.setLoginStatus(1);
-				cdao.updateCredentials(c);
-				return c.getUserType() ;
-			}
-			else
-			{
-				return "invalid" ;
-			}
+	public Credentials login(Credentials credentials) {
+		Credentials credentials2 = cdao.getCredentialsById(credentials.getUserId());
+		if(credentials2.getPassword().equals(credentials.getPassword())){
+			credentials2.setLoginStatus(1);
+			cdao.updateCredentials(credentials2);
+			return credentials2;
 		}
-		return "invalid";
+		else{
+			return null;
+		}
 	}
 
 	public boolean logout(String userId) {

@@ -29,6 +29,10 @@ public class MainController {
 	public String index(){
 		return "index";
 	}
+	@RequestMapping("/home")
+	public String home(HttpSession session){
+		return ((Credentials)session.getAttribute("user")).getUserType()+"home";
+	}
 	
 	/// ---- Login
 	@RequestMapping("/login")
@@ -37,14 +41,13 @@ public class MainController {
 	}
 	@RequestMapping("/validate")
 	public String validate(Credentials c,Model m,HttpSession session){
-		String result = u.login(c);
-		if(result.equals("invalid")){
+		Credentials result = u.login(c);
+		if(result == null){
 			m.addAttribute("msg","invalid try again");
 			return "login";
 		}else{
-			c.setLoginStatus(1);
-			session.setAttribute("user", c);
-			return c.getUserType()+"home";
+			session.setAttribute("user", result);
+			return result.getUserType()+"home";
 		}
 	}
 	

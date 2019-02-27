@@ -19,7 +19,6 @@
 <hr>
 </c:forEach>
 <hr>
-<a href="../../admin/home">Home</a>
-
+<a href="../patient/home">Home</a>
 </body>
 </html>

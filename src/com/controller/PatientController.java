@@ -45,6 +45,6 @@ public class PatientController {
 		String patientId = "TM"+((Credentials)session.getAttribute("user")).getUserId();
 		List<Appointments> li = patientService.getAppointmentsById(patientId);
 		m.addAttribute("appointmentList", li);
-		return "viewAppointment";
+		return "patientAppointment";
 	}
 }

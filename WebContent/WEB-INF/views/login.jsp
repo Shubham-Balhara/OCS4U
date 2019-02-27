@@ -11,12 +11,12 @@
 <h4 align="center" style="color: red;">${msg }</h4>
 <form action="validate" method="post">
 <table>
-<tr><td>UserType:</td><td><select name="userType">
+<!-- <tr><td>UserType:</td><td><select name="userType">
 	<option value="Doctor">Doctor</option>
 	<option value="Patient" selected="selected">Patient</option>
 	<option value="Reporter">Reporter</option>
 	<option value="Admin">Admin</option></select>
-</td></tr>
+</td></tr> -->
 <tr><td>UserId:</td><td><input type="text" name="userId"></td></tr>
 <tr><td>Password:</td><td><input type="password" name="password"></td></tr>
 <tr><td><input type="submit" value="Login"></td></tr>
