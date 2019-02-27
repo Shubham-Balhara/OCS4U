@@ -16,6 +16,7 @@ import com.bean.Credentials;
 import com.bean.Doctor;
 import com.bean.Profile;
 import com.dao.CredentialsDao;
+import com.service.AdministratorService;
 import com.service.PatientService;
 import com.util.User;
 
@@ -27,7 +28,11 @@ public class MainController {
 	@Autowired
 	PatientService patientService;
 	@Autowired
+	AdministratorService administratorService;
+	@Autowired
 	CredentialsDao credentialsDao ;
+	@Autowired
+	HttpSession session;
 	
 	
 	//-------home page
@@ -36,9 +41,14 @@ public class MainController {
 		return "index";
 	}
 	@RequestMapping("/home")
-	public String home(Model m,HttpSession session){
-		List<Appointments> li = patientService.getAppointmentsById("TM"+((Credentials)session.getAttribute("user")).getUserId());
-		m.addAttribute("appointmentList", li);
+	public String home(Model m){
+		Credentials user = ((Credentials)session.getAttribute("user"));
+		if(user.getUserType().equals("Patient")){
+			List<Appointments> li = patientService.getAppointmentsById("TM"+user.getUserId());
+			m.addAttribute("appointmentList", li);
+		}else{
+			m.addAttribute("doctorList", administratorService.getAllDoctor());
+		}
 		return "home";
 	}
 	
@@ -48,7 +58,7 @@ public class MainController {
 		return "login";
 	}
 	@RequestMapping("/validate")
-	public String validate(Credentials c,Model m,HttpSession session){
+	public String validate(Credentials c,Model m){
 		Credentials result = u.login(c);
 		if(result == null){
 			m.addAttribute("msg","invalid try again");
@@ -96,7 +106,7 @@ public class MainController {
 	   	return "updatePassword" ;
 	}
 	@RequestMapping("/updatePasswordInDB")
-	public String updatePassword(@RequestParam("password")String oldPassword, @RequestParam("newPassword") String newPassword, Model m,HttpSession session)
+	public String updatePassword(@RequestParam("password")String oldPassword, @RequestParam("newPassword") String newPassword, Model m)
 	{
           String msg = u.changePassword(((Credentials)session.getAttribute("user")).getUserId(), oldPassword, newPassword) ;
           m.addAttribute("msg" ,msg) ;

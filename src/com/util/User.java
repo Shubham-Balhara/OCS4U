@@ -23,7 +23,7 @@ public class User {
 	
 	public Credentials login(Credentials credentials) {
 		Credentials credentials2 = cdao.getCredentialsById(credentials.getUserId());
-		if(credentials2.getPassword().equals(credentials.getPassword())){
+		if(credentials2 != null && credentials2.getPassword().equals(credentials.getPassword())){
 			credentials2.setLoginStatus(1);
 			cdao.updateCredentials(credentials2);
 			return credentials2;

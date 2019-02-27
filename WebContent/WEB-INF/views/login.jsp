@@ -42,7 +42,8 @@ body {
 		<div class="d-flex justify-content-center h-100">
 			<div class="card">
 				<div class="card-header">
-					<h3>Sign In</h3>
+					<h3>Log In</h3>
+					<h5 align="center" style="color: orange ;">${msg }</h5>
 					<div class="d-flex justify-content-end social_icon">
 						<span><i class="fab fa-facebook-square"></i></span> <span><i
 							class="fab fa-google-plus-square"></i></span> <span><i
@@ -55,7 +56,7 @@ body {
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fas fa-user"></i></span>
 							</div>
-							<input type="text" class="form-control" placeholder="username" name="userId">
+							<input type="text" class="form-control" placeholder="userId" name="userId">
 
 						</div>
 						<div class="input-group form-group">

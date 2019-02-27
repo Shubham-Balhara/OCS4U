@@ -2,12 +2,15 @@ package com.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.bean.Credentials;
 import com.bean.Doctor;
 import com.bean.Profile;
 import com.service.AdministratorService;
@@ -17,10 +20,13 @@ import com.service.AdministratorService;
 public class AdminController {
 	@Autowired
 	AdministratorService administratorService;
+	@Autowired
+	HttpSession session;
 
 	//-------Admin home
 		@RequestMapping("/home")
-		public String home(){
+		public String home(Model m){
+			m.addAttribute("doctorList", administratorService.getAllDoctor());
 			return "home";
 		}
 		

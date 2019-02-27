@@ -8,7 +8,7 @@
 <title>ALL Doctor</title>
 </head>
 <body>
-<h1 align="center">===== View ALL Doctors =======</h1>
+<%-- <h1 align="center">===== View ALL Doctors =======</h1>
 <c:forEach items="${doctorList}" var="e" >
   <c:out value="${e.doctorName}"/>
    <c:out value="${e.specialization}"/>
@@ -17,9 +17,51 @@
     <a href="../admin/doctor/${e.doctorId}">View Details</a>
 <hr>
 </c:forEach>
-<hr>
+<hr> --%>
 
-
-
+<div class="albums-container container-fluid">
+    <c:choose>
+    <c:when test="${doctorList != null }">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3><b>Doctors:</b></h3>
+        </div>
+            <c:forEach items="${doctorList }" var="e">
+                <div class="col-sm-4 col-lg-3">
+                    <div class="thumbnail">
+                        <a href="#">
+                            <div style="height: 200px">
+                                <c:choose>
+                                <c:when test="${e.gender == \"male\" }">
+                                <center><img src="/OCS/images/doctor_male.png" class="img-responsive" style="height: 190px"></center>
+                                </c:when>
+                                <c:when test="${e.gender ==\"female\" }">
+                                <center><img src="/OCS/images/doctor_female.png" class="img-responsive" style="height: 190px"></center>
+                                </c:when>
+                                </c:choose>
+                                <hr>
+                            </div>
+                        </a>
+                        <div class="caption">
+                            <h2><b>${e.doctorName}</b></h2>
+                            <h4 style="color:#595959">&emsp;Specailization: ${e.specialization}</h4>
+                            <h5 style="color:#595959">&emsp;Experince: ${e.yearsOfExperience}years</h5>
+                            <h5><i><u>Contact:</u></i></h5>
+                            <h5 style="color:#595959">&emsp;Mobile: ${e.mobileNumber}</h5>
+                            <h5 style="color:#595959">&emsp;Email: ${e.emailId}</h5>
+                        </div>
+                        <a href="../admin/doctor/${e.doctorId}" class="btn btn-primary btn-sm" role="button">View Details</a>
+                    </div>
+                </div>
+            </c:forEach>
+            </c:when>
+        <c:otherwise>
+            <div class="jumbotron">
+                <h2><b>No Doctors</b></h2>
+            </div>
+        </c:otherwise>
+        </c:choose>
+    </div>
+</div>
 </body>
 </html>

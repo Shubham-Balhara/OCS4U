@@ -19,9 +19,12 @@ public class ReporterController {
 
 	@Autowired
 	ReporterService reporterService;
+	@Autowired
+	HttpSession session;
 	
 	@RequestMapping("/home")
-	public String home(HttpSession session){
+	public String home(Model m){
+		m.addAttribute("doctorList", reporterService.getAllDoctors());
 		return "home";
 	}
 	

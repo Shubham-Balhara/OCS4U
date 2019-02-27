@@ -9,6 +9,13 @@
 </head>
 <body>
 <c:import url="../views/base.jsp" />
+<c:choose>
+<c:when test="${user.userType ==\"Patient\" }">
 <c:import url="../views/patientAppointment.jsp"/>
+</c:when>
+<c:otherwise>
+<c:import url="../views/viewAllDoctor.jsp"/>
+</c:otherwise>
+</c:choose>
 </body>
 </html>
