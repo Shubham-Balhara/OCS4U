@@ -8,8 +8,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<style type="text/css">
+body {
+     background: url("/OCS/images/doctor-background.jpeg") fixed;
+    background-size: cover;
+}</style>
+
 </head>
 <body>
+
 <h1 align="center">===== View ALL Appointment =======</h1>
 <c:forEach items="${appointmentList}" var="e" >
   <c:out value="${e.doctorId}"/>

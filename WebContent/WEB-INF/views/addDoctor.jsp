@@ -74,6 +74,11 @@ $(function(){
 });</script>
 <!--Custom styles-->
 <link rel="stylesheet" type="text/css" href="/OCS/css/signUp.css">
+<style type="text/css">
+body {
+     background: url("/OCS/images/pulseRate.jpg") fixed;
+    background-size: cover;
+}</style>
 
 </head><body>
 <h4 align="center" style="color: red;">${msg }</h4>

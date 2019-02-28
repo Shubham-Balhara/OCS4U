@@ -45,7 +45,7 @@
                         <div class="caption">
                             <h2><b>${e.doctorName}</b></h2>
                             <h4 style="color:#595959">&emsp;Specailization: ${e.specialization}</h4>
-                            <h5 style="color:#595959">&emsp;Experince: ${e.yearsOfExperience}years</h5>
+                            <h5 style="color:#595959">&emsp;Experience: ${e.yearsOfExperience}years</h5>
                             <h5><i><u>Contact:</u></i></h5>
                             <h5 style="color:#595959">&emsp;Mobile: ${e.mobileNumber}</h5>
                             <h5 style="color:#595959">&emsp;Email: ${e.emailId}</h5>

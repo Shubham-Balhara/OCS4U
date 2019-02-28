@@ -44,7 +44,7 @@ public class AdminController {
 			return "addDoctor";
 		} else {
 			m.addAttribute("msg", "Doctor Added Successfully ,click on view to see Details !!");
-			return "Adminhome";
+			return "home";    //Adminhome.jsp
 		}
 	}
 
