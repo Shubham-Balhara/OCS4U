@@ -30,7 +30,7 @@ public class ReporterServiceImpl implements ReporterService {
 	DoctorDao doctorDao;
 	@Autowired
 	LeaveDao leaveDao;
-	static int index = 6;
+	static int index = 21;
 	static int lindex = 2;
 	
 	@Override
@@ -146,7 +146,15 @@ public class ReporterServiceImpl implements ReporterService {
 			id+=lindex;
 		}
 		leave.setLeaveId(id);
-		leave.setStatus(0);
+		List<Appointments> appointments = adao.getAppointmentsByDoctor(leave.getDoctorId());
+		int status = 0;
+		for(Appointments a:appointments){
+			if(a.getAppointmentDate().compareTo(leave.getLeaveFrom())>=0 && a.getAppointmentDate().compareTo(leave.getLeaveTo())<=0){
+				status = 1;
+				break;
+			}
+		}
+		leave.setStatus(status);
 		return leaveDao.addLeave(leave);
 	}
 
