@@ -24,14 +24,33 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <b><strong><a class="navbar-brand" href="../main/index" style="font-family: cursive;font-size: xx-large;">OCS</a></strong></b>
+            <c:choose>
+            	<c:when test="${user.userType == \"Admin\" }">
+            		<b><strong><a class="navbar-brand" href="../admin/home" style="font-family: cursive;font-size: xx-large;">OCS</a></strong></b>    
+            	</c:when>
+            <c:when test="${user.userType == \"Patient\" }">
+            	<b><strong><a class="navbar-brand" href="../patient/home" style="font-family: cursive;font-size: xx-large;">OCS</a></strong></b>
+            </c:when>
+            <c:when test="${user.userType == \"Reporter\" }">
+            	<b><strong><a class="navbar-brand" href="../reporter/home" style="font-family: cursive;font-size: xx-large;">OCS</a></strong></b>
+            </c:when>
+            </c:choose>
         </div>
 
         <!-- Items -->
         <div class="collapse navbar-collapse" id="topNavBar">
             <ul class="nav navbar-nav">
-                <li class="{% block albums_active %}{% endblock %}"><a href="../patient/home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp; Home</a></li>
-                
+            <c:choose>
+            <c:when test="${user.userType == \"Admin\" }">
+                <li class="{% block albums_active %}{% endblock %}"><a href="../admin/home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp; Home</a></li>
+            </c:when>
+            <c:when test="${user.userType == \"Patient\" }">
+            <li class="{% block albums_active %}{% endblock %}"><a href="../patient/home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp; Home</a></li>
+            </c:when>
+            <c:when test="${user.userType == \"Reporter\" }">
+            <li class="{% block albums_active %}{% endblock %}"><a href="../reporter/home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp; Home</a></li>
+            </c:when>
+            </c:choose>
             </ul>
             
             <ul class="nav navbar-nav navbar-right">
@@ -44,11 +63,6 @@
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Book Appointment
                     </a>
                 </li>
-                <li>
-                    <a href="../patient/apOfP">
-                        <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&nbsp; All Appointment
-                    </a>
-                </li>
                 </c:when>
                 <c:when test="${user.userType == \"Admin\" }">
                		 <li>
@@ -56,18 +70,8 @@
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Add Doctor
                         </a>
                     </li>
-                    <li>
-                        <a href="../admin/viewAll">
-                            <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&nbsp; View Doctors
-                        </a>
-                    </li>
                 </c:when>
                 <c:when test="${user.userType == \"Reporter\" }">
-               		 <li>
-                        <a href="../reporter/allDoctors">
-                            <span class="glyphicon glyphicon-education" aria-hidden="true"></span>&nbsp; View All Doctors
-                        </a>
-                    </li>
                     <li>
                         <a href="../reporter/applyLeave">
                             <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>&nbsp; Apply Leave

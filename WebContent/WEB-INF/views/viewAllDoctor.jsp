@@ -29,7 +29,7 @@
             <c:forEach items="${doctorList }" var="e">
                 <div class="col-sm-4 col-lg-3">
                     <div class="thumbnail">
-                        <a href="#">
+                        <a href="../admin/doctor/${e.doctorId}">
                             <div style="height: 200px">
                                 <c:choose>
                                 <c:when test="${e.gender == \"male\" }">
@@ -56,7 +56,7 @@
             </c:forEach>
             </c:when>
         <c:otherwise>
-            <div class="jumbotron">
+            <div class="jumbotron col-sm-12">
                 <h2><b>No Doctors</b></h2>
             </div>
         </c:otherwise>

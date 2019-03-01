@@ -136,14 +136,17 @@ body {
 								<div class="col-sm-5 col-xs-6 tital ">Nationality:</div>
 								<div class="col-sm-7">Indian</div><br>
 								<hr>
+								<c:if test="${user.userType ==\"Admin\" }">
                                 <div class="col-sm-5 col-xs-6 tital "><a href="../updateDoctor/${e.doctorId}" class="btn btn-success" role="button">Update Doctor details</a></div>
+                                </c:if>
 								<div class="col-sm-5 col-xs-6 tital "> <a href="../../patient/apOfD/${e.doctorId }" class="btn btn-primary" role="button">View Appointments of Doctor</a></div>
 <br><br>
 								<!-- /.box-body -->
 							</div>
 							<!-- /.box -->
+							<c:if test="${user.userType ==\"Admin\" }">
                               <div class="col-sm-5 col-xs-6 tital "><a href="../deleteDoctor/${e.doctorId}" class="btn btn-danger" role="button">Delete Doctor</a></div>
-								
+								</c:if>
 						</div>
 
 
