@@ -7,12 +7,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
-<c:forEach items="${leaves }" var="leave">
+<body style="background-color: #f2f2f2">
+<div><c:forEach items="${leaves }" var="leave">
 <c:out value="${leave.leaveFrom }"/><br/>
 <c:out value="${leave.leaveTo }"/><br/>
 <c:out value="${leave.reason }"/><br/><hr/>
 </c:forEach>
-<a href="../../reporter/home">Home</a>
+</div>
+
+<a href="../../reporter/home" " data-toggle="tooltip" title="Back to HOME"><h3><style="font-family: cursive; color: navy;">Home</h3></a>
+
 </body>
 </html>

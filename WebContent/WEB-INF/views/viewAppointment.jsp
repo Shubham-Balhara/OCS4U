@@ -20,6 +20,9 @@ body {
 
 </head>
 <body>
+<br><br>
+<div class="col-sm-5 col-xs-6 tital "><a href="../../admin/home" class="btn btn-success" role="button">HOME</a></div>
+
 
 <div class="container " style="padding-top: 100px;">
 <table class="table table-bordered table-striped table-hover" id="tab">
@@ -63,8 +66,6 @@ body {
   
   </table>
 </div><br /><br />
-
-<div class="col-sm-5 col-xs-6 tital "><a href="../../admin/home" class="btn btn-success" role="button">HOME</a></div>
 
 
 </body>
