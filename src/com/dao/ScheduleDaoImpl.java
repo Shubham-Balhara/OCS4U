@@ -34,8 +34,7 @@ public class ScheduleDaoImpl implements ScheduleDao {
 		Session session = sf.getCurrentSession();
 		Query q = session.createQuery("from Schedule where doctorId=:did");
 		q.setParameter("did", did);
-		List<Schedule> li = q.list();
-		return li;
+		return q.list();
 	}
 
 	@Override

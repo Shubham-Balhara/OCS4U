@@ -150,12 +150,12 @@ body {
                         <div class="row">
                             <div class="col-sm-4">
                                 <label class="radio-inline">
-                                    <input type="radio" id="femaleRadio" name="gender" value="Female">female
+                                    <input type="radio" id="femaleRadio" name="gender" value="female">Female
                                 </label>
                             </div>
                             <div class="col-sm-4">
                                 <label class="radio-inline">
-                                    <input type="radio" id="maleRadio" name="gender"  value="Male">male
+                                    <input type="radio" id="maleRadio" name="gender"  value="male">Male
                                 </label>
                             </div>
                         </div>

@@ -33,7 +33,7 @@ public class AppointmentController {
 	@RequestMapping("/findDoctor")
 	public String findDoctor(@RequestParam("doctorType") String type, Model m) {
 		List<Doctor> li = patientService.viewListOfDoctor(type);
-		m.addAttribute("doctors", li);
+		m.addAttribute("doctorList", li);
 		return "doctorResult";
 	}
 

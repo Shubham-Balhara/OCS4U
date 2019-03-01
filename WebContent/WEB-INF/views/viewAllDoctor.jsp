@@ -8,17 +8,6 @@
 <title>ALL Doctor</title>
 </head>
 <body>
-<%-- <h1 align="center">===== View ALL Doctors =======</h1>
-<c:forEach items="${doctorList}" var="e" >
-  <c:out value="${e.doctorName}"/>
-   <c:out value="${e.specialization}"/>
-   <c:out value="${e.yearsOfExperience}"/>
-    <c:out value="${e.mobileNumber}"/>
-    <a href="../admin/doctor/${e.doctorId}">View Details</a>
-<hr>
-</c:forEach>
-<hr> --%>
-
 <div class="albums-container container-fluid">
     <c:choose>
     <c:when test="${doctorList != null }">
