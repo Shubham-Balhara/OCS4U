@@ -84,7 +84,7 @@
                     </li>
                 </c:when></c:choose>
                     <li>
-                        <a href="#">
+                        <a href="../main/profile">
                             <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; ${user.userType }
                         </a>
                     </li>

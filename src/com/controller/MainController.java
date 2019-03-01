@@ -116,4 +116,13 @@ public class MainController {
         	 return "updatePassword" ;
 	}
 	
+	@RequestMapping("/profile")
+	public String profile(Model m)
+	{
+		Profile p = u.getProfileById( ( (Credentials)session.getAttribute("user") ).getUserId())  ;
+		
+          m.addAttribute("profile" ,p) ;   
+	
+          return "profile" ;
+	}
 }

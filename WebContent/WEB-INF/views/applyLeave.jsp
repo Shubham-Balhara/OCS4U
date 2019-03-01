@@ -32,7 +32,7 @@
 <tr><td>  <button type="submit" class="btn btn-primary">Apply</button></td></tr>
 </table>
 </form>
-<a href="../reporter/home">Home</a>
+
 
 </div></body>
 </html>

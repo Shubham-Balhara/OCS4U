@@ -75,5 +75,8 @@ public class User {
 			return "fail";
 		}
 	}
-	
+	public Profile getProfileById(String id)
+	{
+		return pdao.getProfileById(id);
+	}
 }

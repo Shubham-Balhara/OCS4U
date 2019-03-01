@@ -5,6 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Update Doctor</title>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
 <script type="text/javascript">
 var check = function() {
 	  if (document.getElementById('password').value ==
@@ -18,21 +20,22 @@ var check = function() {
 	}
 </script>
 </head>
-<body>
-<h1 align="center">===== UPDATE PASSWORD ===== </h1> <hr>
+<body style="background-color: #f2f2f2;">
+<div class="container"><h1 align="center">===== UPDATE PASSWORD ===== </h1><div class="row">
+<a href="#">Home</a>&nbsp; | &nbsp;
+<a href="/main/logout">LogOut</a></div> </div><hr>
 <h4 align="center" style="color: red;">${msg}</h4><br>
+<div class="container">
 <form action="updatePasswordInDB" >
 <input type="text" name="userId" value="${userId}" style="visibility: hidden;"/>
 <table align="center">
-<tr><td>Old Password : </td><td><input type="password" name="password"  required/></td></tr>
-<tr><td>New Password : </td><td><input type="password"  id="password" name="newPassword" onkeyup='check();'  required/></td></tr>
-<tr><td>Re-Enter New Password : </td><td><input type="password" name="confirmPassword" id="confirmPassword" onkeyup='check();' required/>  <span id='message'></span></td></tr>
-<tr><td><input type="submit" value="Update"/></td></tr>
+<tr><td>Old Password : </td><td><input type="password" name="password" class="form-control" placeholder="Current Password"  required/></td></tr>
+<tr><td>New Password : </td><td><input type="password" class="form-control" placeholder="New Password" id="password" name="newPassword" onkeyup='check();'  required/></td></tr>
+<tr><td>Re-Enter New Password : </td><td><input type="password"  class="form-control" placeholder="Confirm Password" name="confirmPassword" id="confirmPassword" onkeyup='check();' required/>  <span id='message'></span></td></tr>
+<tr><td><input type="submit" class="btn btn-success"  value="Update"/></td></tr>
 </table>
-</form>
+</form></div>
 <hr>
-<a href="#">Home</a>
-<a href="/main/logout">LogOut</a>
 
 </body>
 </html>

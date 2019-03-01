@@ -8,9 +8,17 @@
 <title>Insert title here</title>
 </head>
 <body style="background-color: #f2f2f2">
-<div><c:forEach items="${leaves }" var="leave">
+<br><br>
+<div class="container" align="center">
+<c:forEach items="${leaves }" var="leave">
+ <label class="sr-only" for="from">Leave From : </label>
+
 <c:out value="${leave.leaveFrom }"/><br/>
+ <label class="sr-only" for="leaveTo">To  : </label>
+
 <c:out value="${leave.leaveTo }"/><br/>
+
+ <label class="sr-only" for="reason">Reason : </label>
 <c:out value="${leave.reason }"/><br/><hr/>
 </c:forEach>
 </div>
