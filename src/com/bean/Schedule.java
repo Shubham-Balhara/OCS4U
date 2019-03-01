@@ -1,6 +1,13 @@
 package com.bean;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="schedules")
 public class Schedule {
+	@Id
 	private String scheduleId ;
 	private String doctorId ;
 	private String availableDays ;
@@ -9,10 +16,9 @@ public class Schedule {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Schedule(String scheduleId, String doctorId,
+	public Schedule(String doctorId,
 			String availableDays, String slots) {
 		super();
-		this.scheduleId = scheduleId;
 		this.doctorId = doctorId;
 		this.availableDays = availableDays;
 		this.slots = slots;

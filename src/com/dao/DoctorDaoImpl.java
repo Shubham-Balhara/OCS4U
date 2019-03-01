@@ -50,4 +50,13 @@ public class DoctorDaoImpl implements DoctorDao {
 		return "success";
 	}
 
+	@Override
+	public List<Doctor> getAllDoctorByType(String type) {
+		Session session = sf.getCurrentSession();
+		Query q = session.createQuery("from Doctor where specialization=:type");
+		q.setParameter("type", type);
+		List<Doctor> li = q.list();
+		return li;
+	}
+
 }
