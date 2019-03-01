@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,14 +8,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3>Appointment Booked</h3>
-<a href="../main/logout">Home</a>
-<h4>Details:</h4>
-<c:forEach items="${appointments}" var="appointment">
-<c:out value="${appointment.doctorId }"/><br/>
-<c:out value="${appointment.patientId }"/><br/>
-<c:out value="${appointment.appointmentDate }"/><br/>
-<c:out value="${appointment.appointmentSlot }"/><br/>
-</c:forEach>
+<c:import url="base.jsp"/>
+<div class="jumbotron" align="center">
+<h4>Appointment Booked Successfully</h4>
+<h5>Details: </h5>
+<h6>${appointments.doctorId }</h6>
+<h6>${appointments.patientId }</h6>
+<h6>${appointments.appointmentDate }</h6>
+<h6>${appointments.appointmentSlot }</h6>
+</div>
 </body>
 </html>

@@ -30,7 +30,7 @@ public class ReporterServiceImpl implements ReporterService {
 	DoctorDao doctorDao;
 	@Autowired
 	LeaveDao leaveDao;
-	static int index = 5;
+	static int index = 6;
 	static int lindex = 2;
 	
 	@Override
@@ -73,20 +73,19 @@ public class ReporterServiceImpl implements ReporterService {
 		
 		List<Schedule> schedules = scheduleDao.getAllScheduleByDoctor(doctorId);
 		List<String> days = new ArrayList<String>();
-		
+		System.out.println("schedules" + schedules);
 		for(int i=0;i<3;i++){
 			cal.setTime(new Date());
 			cal.add(Calendar.DAY_OF_MONTH, -i);
 			days.add(new SimpleDateFormat("EEEE").format(cal.getTime()).toLowerCase());
 		}
-		
 		List<Schedule> safeSchedules = new ArrayList<Schedule>();
 		for(Schedule s:schedules){
 			if(!days.contains(s.getAvailableDays())){
 				safeSchedules.add(s);
 			}
 		}
-		
+		//System.out.println("level2");
 		List<Appointments> appointments = new ArrayList<Appointments>();
 		for(Schedule s:safeSchedules){
 			cal.setTime(new Date());
@@ -98,8 +97,10 @@ public class ReporterServiceImpl implements ReporterService {
 			cal.add(Calendar.DAY_OF_MONTH, gap);
 			appointments.add(new Appointments(doctorId, "TM"+userId, new SimpleDateFormat("yyyy-MM-dd").format(cal.getTime()), s.getSlots()));
 		}
+		//System.out.println("level3");
 		List<Appointments> presentAppointments = adao.getAppointmentsByDoctor(doctorId);
 		List<Appointments> availableAppointments = new ArrayList<Appointments>();
+		
 		outter:
 		for(Appointments a:appointments){
 			for(Appointments b:presentAppointments){
@@ -109,9 +110,23 @@ public class ReporterServiceImpl implements ReporterService {
 			}
 			availableAppointments.add(a);
 		}
+		return removeLeave(availableAppointments, doctorId);
 		
-		return availableAppointments;
-		
+	}
+	
+	public List<Appointments> removeLeave(List<Appointments> appointments, String doctorId){
+		List<Leave> leave = leaveDao.getAllLeaveByDoctor(doctorId);
+		List<Appointments> li = new ArrayList<Appointments>();
+		outter:
+		for(Appointments a:appointments){
+			for(Leave l:leave){
+				if(a.getAppointmentDate().compareTo(l.getLeaveTo())<=0 && a.getAppointmentDate().compareTo(l.getLeaveFrom())>=0){
+					continue outter;
+				}
+			}
+			li.add(a);
+		}
+		return li;
 	}
 
 	@Override
