@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" errorPage="error.jsp" %>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
@@ -16,6 +16,7 @@
 <link href="http://html.iwthemes.com/mas/css/styles.css"
 	rel="stylesheet" media="screen">
 <link rel="shortcut icon" type="image/ico" href="img/favicon.ico" />
+<link rel="shortcut icon" type="image/png" href="/OCS/images/logo/logo4.png">
 </head>
 <body class="body-home">
 	<header class="header">
