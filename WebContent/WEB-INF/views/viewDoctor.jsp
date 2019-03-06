@@ -52,7 +52,7 @@ body {
 									<!-- /input-group -->
 								</div>
 								<div class="col-sm-6">
-									<h2 style="color:red;">${e.doctorName}</h2>
+									<h2 style="color:red;">Dr.${e.doctorName}</h2>
 									</span> <span><h4 style="color: blue; font-style: oblique;">${e.specialization}</h4></span>
 								</div>
 								<div class="clearfix"></div>

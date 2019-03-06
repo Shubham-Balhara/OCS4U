@@ -21,7 +21,7 @@ public class AdministratorServiceImpl implements AdministratorService {
 	AppointmentDao appointmentDao;
 	@Autowired
 	ScheduleDao scheduledao;
-	static int index = 20;
+	static int index = 25;
 	
 	public String addDoctor(Doctor d){
 		index++;

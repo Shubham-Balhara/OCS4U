@@ -13,6 +13,7 @@
 <title>Print report</title>
 </head>
 <body>
+<div id="report">
 <h2 align="center" style="margin-top: 30px;"><b>OCS</b> - Online Clinic System</h2>
 <h3 align="center">Report of Diagnosis</h3><hr>
 <table align="center">
@@ -48,8 +49,16 @@
 </c:choose>
 </td></tr>
 </table><hr>
+</div>
+<script type="text/javascript">
+	function fun() {
+		var content = document.getElementById("report").innerHTML;
+		document.body.innerHTML = content;
+		window.print();
+	}
+</script>
 <div align="center">
-	<button class="btn btn-primary" onclick="window.print()">Print</button>
+	<button class="btn btn-primary" onclick="fun()">Print</button>
 	<a href="../../patient/home" class="btn btn-success" style="margin-left: 20px">Home</a>
 </div>
 </body>
