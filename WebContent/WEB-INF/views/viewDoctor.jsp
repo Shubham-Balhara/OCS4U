@@ -18,6 +18,7 @@ body {
      background: url("/OCS/images/doctor-background.jpeg") fixed;
     background-size: cover;
 }</style>
+<link rel="shortcut icon" type="image/png" href="/OCS/images/logo/logo4.png">
 
 </head>
 <body><div class="container">
@@ -63,7 +64,7 @@ body {
 								<div class="bot-border"></div>
 
 								<div class="col-sm-5 col-xs-6 tital ">Name:</div>
-								<div class="col-sm-7 col-xs-6 ">${e.doctorName}</div>
+								<div class="col-sm-7 col-xs-6 ">Dr. ${e.doctorName}</div>
 								<div class="clearfix"></div>
 								<div class="bot-border"></div>
 								

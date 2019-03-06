@@ -10,7 +10,8 @@
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-<head>
+<head><link rel="shortcut icon" type="image/png" href="/OCS/images/logo/logo4.png">
+
 <script type="text/javascript">
 $(function(){
 	$.validator.setDefaults({
@@ -60,14 +61,7 @@ $(function(){
 					required: ' Please enter email',
 					email: ' Please enter valid email'
 				},
-				weight: {
-					required: " Please enter your weight",
-					number: " Only numbers allowed"
-				},
-				height: {
-					required: " Please enter your height",
-					number: " Only numbers allowed"
-				},
+				
 			}
 			
 	});
@@ -84,7 +78,7 @@ $(function(){
                 <div class="form-group">
                     <label for="doctorId" class="col-sm-3 control-label">Doctor ID</label>
                     <div class="col-sm-9">
-                        <input type="text" id="doctorId" value="${doctor.doctorId }" class="form-control" name="doctorId" required autofocus>
+                        <input type="text" id="doctorId" value="${doctor.doctorId }" class="form-control" name="doctorId" required autofocus readonly>
                     </div>
                 </div>
                 <div class="form-group">
@@ -116,7 +110,7 @@ $(function(){
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="phoneNumber" class="col-sm-3 control-label">Phone number </label>
+                    <label for="phoneNumber" class="col-sm-3 control-label">Phone number*</label>
                     <div class="col-sm-9">
                         <input type="phoneNumber" id="phoneNumber"  value="${doctor.mobileNumber}" class="form-control"  name="mobileNumber" required>
                         <span class="help-block">Your phone number won't be disclosed anywhere </span>
@@ -142,47 +136,47 @@ $(function(){
                 </div>
                 
                 <div class="form-group">
-                    <label for="street" class="col-sm-3 control-label">Street</label>
+                    <label for="street" class="col-sm-3 control-label">Street*</label>
                     <div class="col-sm-9">
                         <input type="text" id="street" value="${doctor.street}" class="form-control" name="street" required autofocus>
                     </div>
                 </div>
                              <div class="form-group">
-                    <label for="location" class="col-sm-3 control-label">Location</label>
+                    <label for="location" class="col-sm-3 control-label">Location*</label>
                     <div class="col-sm-9">
                         <input type="text" id="location" value="${doctor.location}" class="form-control" name="location" required autofocus>
                     </div>
                 </div>
                               <div class="form-group">
-                    <label for="city" class="col-sm-3 control-label">City</label>
+                    <label for="city" class="col-sm-3 control-label">City*</label>
                     <div class="col-sm-9">
                         <input type="text" id="city" value="${doctor.city}"class="form-control" name="city" required autofocus>
                     </div>
                 </div>
                               <div class="form-group">
-                    <label for="state" class="col-sm-3 control-label">State</label>
+                    <label for="state" class="col-sm-3 control-label">State*</label>
                     <div class="col-sm-9">
                         <input type="text" id="state" value="${doctor.state}" class="form-control" name="state" required autofocus>
                     </div>
                 </div>
                               <div class="form-group">
-                    <label for="pincode" class="col-sm-3 control-label">PinCode</label>
+                    <label for="pincode" class="col-sm-3 control-label">PinCode*</label>
                     <div class="col-sm-9">
                         <input type="text" id="pincode" value="${doctor.pincode}" class="form-control" name="pincode" required autofocus>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-3">Gender</label>
+                    <label class="control-label col-sm-3">Gender*</label>
                     <div class="col-sm-6">
                         <div class="row">
                             <div class="col-sm-4">
                                 <label class="radio-inline">
-                                    <input type="radio" id="femaleRadio" name="gender" value="Female">Female
+                                    <input type="radio" id="femaleRadio" name="gender" value="female">Female
                                 </label>
                             </div>
                             <div class="col-sm-4">
                                 <label class="radio-inline">
-                                    <input type="radio" id="maleRadio" name="gender"  value="Male">Male
+                                    <input type="radio" id="maleRadio" name="gender"  value="male">Male
                                 </label>
                             </div>
                         </div>

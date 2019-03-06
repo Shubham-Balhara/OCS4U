@@ -11,6 +11,7 @@
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 <html>
+<link rel="shortcut icon" type="image/png" href="/OCS/images/logo/logo4.png">
 <head>
 <title>Login Page</title>
 

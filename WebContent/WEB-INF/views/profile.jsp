@@ -18,6 +18,7 @@ body {
      background: url("/OCS/images/doctor-background.jpeg") fixed;
     background-size: cover;
 }</style>
+<link rel="shortcut icon" type="image/png" href="/OCS/images/logo/logo4.png">
 
 </head>
 <body><div class="container">

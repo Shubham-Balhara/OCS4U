@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<link rel="shortcut icon" type="image/png" href="/OCS/images/logo/logo4.png">
 </head>
 <body>
 <%-- <c:forEach items="${appointments}" var="appointment">

@@ -18,7 +18,8 @@ var check = function() {
 	    document.getElementById('message').innerHTML = 'not matching';
 	  }
 	}
-</script>
+</script><link rel="shortcut icon" type="image/png" href="/OCS/images/logo/logo4.png">
+
 </head>
 <body style="background-color: #f2f2f2;">
 <div class="container"><h1 align="center">===== UPDATE PASSWORD ===== </h1><div class="row">
