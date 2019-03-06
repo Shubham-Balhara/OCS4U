@@ -16,4 +16,5 @@ public interface PatientService {
 	public String requestforAppointment(String doctorid,String appointmentdate);
 	public Map<Appointments, Patient>viewAppointmentDetail(String patientid,String date);
 	public List<Appointments> getAppointmentsById(String patientId);
+	public List<Appointments> getReportById(String patientId);
 }

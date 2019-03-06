@@ -17,4 +17,5 @@ public interface ReporterService {
 	public List<Leave> getLeaveByDoctor(String doctorId);
 	public List<Appointments> reschedule(String aip);
 	public String updateAppointment(Appointments a);
+	public Appointments getAppointmentByAid(String aid);
 }

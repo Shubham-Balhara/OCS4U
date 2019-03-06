@@ -83,5 +83,19 @@ public class PatientServiceImpl implements PatientService {
 		}
 		return appointments;
 	}
+	@Override
+	public List<Appointments> getReportById(String patientId) {
+		List<Appointments> li = appointmentDao.getAppointmentsByPatient(patientId);
+		Collections.sort(li);
+		List<Appointments> appointments = new ArrayList<Appointments>();
+		for(Appointments a:li){
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(new Date());
+			if(a.getAppointmentDate().compareTo(new SimpleDateFormat("yyyy-MM-dd").format(new Date()))<0){
+				appointments.add(a);
+			}
+		}
+		return appointments;
+	}
 
 }

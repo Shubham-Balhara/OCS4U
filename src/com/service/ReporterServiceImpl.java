@@ -181,4 +181,9 @@ public class ReporterServiceImpl implements ReporterService {
 		return adao.updateAppointment(a);
 	}
 
+	@Override
+	public Appointments getAppointmentByAid(String aid) {
+		return adao.getAppointmentById(aid);
+	}
+
 }

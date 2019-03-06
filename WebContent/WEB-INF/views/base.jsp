@@ -63,6 +63,11 @@
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Book Appointment
                     </a>
                 </li>
+                <li>
+                    <a href="../patient/report">
+                        <span class="glyphicon glyphicon-book" aria-hidden="true"></span>&nbsp; Get Report
+                    </a>
+                </li>
                 </c:when>
                 <c:when test="${user.userType == \"Admin\" }">
                		 <li>

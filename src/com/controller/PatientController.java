@@ -17,6 +17,7 @@ import com.bean.Credentials;
 import com.dao.AppointmentDao;
 import com.service.AdministratorService;
 import com.service.PatientService;
+import com.service.ReporterService;
 
 @Controller
 @RequestMapping("/patient")
@@ -24,6 +25,8 @@ public class PatientController {
 
 	@Autowired
 	PatientService patientService;
+	@Autowired
+	ReporterService reporterService;
 	@Autowired
 	AdministratorService administratorService;
 
@@ -51,5 +54,18 @@ public class PatientController {
 		m.addAttribute("date", new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
 		m.addAttribute("appointmentList", li);
 		return "patientAppointment";
+	}
+	@RequestMapping("/report")
+	public String getReport(Model m,HttpSession session){
+		String patientId = "TM"+((Credentials)session.getAttribute("user")).getUserId();
+		List<Appointments> li = patientService.getReportById(patientId);
+		m.addAttribute("appointmentList", li);
+		return "reportPage";
+	}
+	@RequestMapping("/printReport/{reportId}")
+	public String printReport(@PathVariable("reportId")String reportId, Model m,HttpSession session){
+		Appointments appointments = reporterService.getAppointmentByAid(reportId);
+		m.addAttribute("report", appointments);
+		return "printReport";
 	}
 }
