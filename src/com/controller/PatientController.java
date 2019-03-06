@@ -1,5 +1,7 @@
 package com.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -46,6 +48,7 @@ public class PatientController {
 	public String appointmentOfPatient(Model m,HttpSession session) {
 		String patientId = "TM"+((Credentials)session.getAttribute("user")).getUserId();
 		List<Appointments> li = patientService.getAppointmentsById(patientId);
+		m.addAttribute("date", new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
 		m.addAttribute("appointmentList", li);
 		return "patientAppointment";
 	}

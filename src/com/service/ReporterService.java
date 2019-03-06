@@ -15,4 +15,6 @@ public interface ReporterService {
 	public List<Doctor> getAllDoctors();
 	public String addLeave(Leave leave);
 	public List<Leave> getLeaveByDoctor(String doctorId);
+	public List<Appointments> reschedule(String aip);
+	public String updateAppointment(Appointments a);
 }

@@ -1,5 +1,12 @@
 package com.service;
 
+import java.lang.reflect.Array;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -64,7 +71,17 @@ public class PatientServiceImpl implements PatientService {
 
 	@Override
 	public List<Appointments> getAppointmentsById(String patientId) {
-		return appointmentDao.getAppointmentsByPatient(patientId);
+		List<Appointments> li = appointmentDao.getAppointmentsByPatient(patientId);
+		Collections.sort(li);
+		List<Appointments> appointments = new ArrayList<Appointments>();
+		for(Appointments a:li){
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(new Date());
+			if(a.getAppointmentDate().compareTo(new SimpleDateFormat("yyyy-MM-dd").format(new Date()))>=0){
+				appointments.add(a);
+			}
+		}
+		return appointments;
 	}
 
 }

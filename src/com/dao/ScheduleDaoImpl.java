@@ -43,4 +43,15 @@ public class ScheduleDaoImpl implements ScheduleDao {
 		return null;
 	}
 
+	@Override
+	public String deleteScheduleByDoctor(String doctorId) {
+		Session session = sf.getCurrentSession();
+		Query q = session.createQuery("delete from Schedule where doctorId=:did");
+		q.setParameter("did", doctorId);
+		if(q.executeUpdate()>0){
+			return "success";
+		}else{
+			return "failed";
+		}
+	}
 }

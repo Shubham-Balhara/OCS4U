@@ -9,4 +9,6 @@ public interface AppointmentDao {
 	public List<Appointments> getAppointmentsByDoctor(String doctorId);
 	public List<Appointments> getAppointmentsByPatient(String patientId);
 	public String deleteAppointment(Appointments a);
+	public Appointments getAppointmentById(String aid);
+	public String updateAppointment(Appointments a);
 }

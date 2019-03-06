@@ -11,6 +11,7 @@ import com.bean.Doctor;
 import com.bean.Patient;
 import com.dao.AppointmentDao;
 import com.dao.DoctorDao;
+import com.dao.ScheduleDao;
 
 @Service
 public class AdministratorServiceImpl implements AdministratorService {
@@ -18,7 +19,9 @@ public class AdministratorServiceImpl implements AdministratorService {
 	DoctorDao ddao;
 	@Autowired
 	AppointmentDao appointmentDao;
-	static int index = 0;
+	@Autowired
+	ScheduleDao scheduledao;
+	static int index = 20;
 	
 	public String addDoctor(Doctor d){
 		index++;
@@ -47,6 +50,7 @@ public class AdministratorServiceImpl implements AdministratorService {
 	}
 	
 	public String deleteDoctor(Doctor d){
+		scheduledao.deleteScheduleByDoctor(d.getDoctorId());
 		return ddao.deleteDoctor(d);
 	}
 	

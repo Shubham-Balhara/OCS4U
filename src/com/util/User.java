@@ -19,7 +19,7 @@ public class User {
 	@Autowired
 	PatientDao patientdao;
 	
-	static int index = 0;
+	static int index = 10;
 	
 	public Credentials login(Credentials credentials) {
 		Credentials credentials2 = cdao.getCredentialsById(credentials.getUserId());
