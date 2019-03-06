@@ -9,5 +9,5 @@ public interface ScheduleDao {
 	public List<Schedule> getAllSchedule();
 	public List<Schedule> getAllScheduleByDoctor(String did);
 	public String deleteSchedule(Schedule s);
-	
+	public String deleteScheduleByDoctor(String doctorId);
 }

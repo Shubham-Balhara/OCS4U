@@ -6,7 +6,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="appointments")
-public class Appointments {
+public class Appointments implements Comparable<Appointments> {
 	@Id
 	private String appointmentId;
 	private String doctorId;
@@ -61,6 +61,12 @@ public class Appointments {
 				+ ", doctorId=" + doctorId + ", patientId=" + patientId
 				+ ", appointmentDate=" + appointmentDate + ", appointmentSlot="
 				+ appointmentSlot + "]";
+	}
+	@Override
+	public int compareTo(Appointments o) {
+		if(appointmentDate == null || o.getAppointmentDate()==null)
+			return 0;
+		return appointmentDate.compareTo(o.getAppointmentDate());
 	}
 
 	

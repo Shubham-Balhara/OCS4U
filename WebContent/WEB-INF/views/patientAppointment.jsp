@@ -18,6 +18,8 @@
             <h3><b>Appointments</b></h3>
         </div>
             <c:forEach items="${appointmentList }" var="e">
+            <c:if test="${date == e.appointmentDate }">
+            <div></c:if>
                 <div class="col-sm-4 col-lg-3">
                     <div class="thumbnail">
                         <a href="#">
@@ -56,9 +58,11 @@
                         	</c:when>
                         </c:choose>
                         </div>
-                        <a href="#" class="btn btn-primary btn-sm" role="button">View Details</a>
+                        <a href="../appointment/reschedule/${e.appointmentId }" class="btn btn-primary btn-sm" role="button">Re-Schedule</a>
                     </div>
                 </div>
+               <c:if test="${date == e.appointmentDate }">
+            </div></c:if>
             </c:forEach>
             </c:when>
         <c:otherwise>

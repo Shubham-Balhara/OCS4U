@@ -30,8 +30,8 @@ public class ReporterServiceImpl implements ReporterService {
 	DoctorDao doctorDao;
 	@Autowired
 	LeaveDao leaveDao;
-	static int index = 21;
-	static int lindex = 2;
+	static int index = 28;
+	static int lindex = 5;
 	
 	@Override
 	public List<Doctor> viewAllDoctors(String date) {
@@ -60,7 +60,8 @@ public class ReporterServiceImpl implements ReporterService {
 		}else{
 			id+=index;
 		}
-		a.setAppointmentId(id);
+		if(a.getAppointmentId()==null)
+			a.setAppointmentId(id);
 		//System.out.println(a.getPatientId()+" patient id in reporterservice");
 		return adao.addAppointment(a);
 	}
@@ -69,16 +70,17 @@ public class ReporterServiceImpl implements ReporterService {
 	public List<Appointments> requestAppointment(String doctorId,String userId){
 		Calendar cal = Calendar.getInstance();
 		Map<String, Integer> mp = new HashMap<String, Integer>();
-		mp.put("sunday", 1);mp.put("monday", 2);mp.put("tuesday", 3);mp.put("wednesday", 4);mp.put("thrusday", 5);mp.put("firday", 6);mp.put("saturday", 7);
+		mp.put("sunday", 1);mp.put("monday", 2);mp.put("tuesday", 3);mp.put("wednesday", 4);mp.put("thursday", 5);mp.put("friday", 6);mp.put("saturday", 7);
 		
 		List<Schedule> schedules = scheduleDao.getAllScheduleByDoctor(doctorId);
 		List<String> days = new ArrayList<String>();
-		System.out.println("schedules" + schedules);
+		//System.out.println("schedules" + schedules);
 		for(int i=0;i<3;i++){
 			cal.setTime(new Date());
 			cal.add(Calendar.DAY_OF_MONTH, -i);
 			days.add(new SimpleDateFormat("EEEE").format(cal.getTime()).toLowerCase());
 		}
+		//System.out.println("level1");
 		List<Schedule> safeSchedules = new ArrayList<Schedule>();
 		for(Schedule s:schedules){
 			if(!days.contains(s.getAvailableDays())){
@@ -95,7 +97,7 @@ public class ReporterServiceImpl implements ReporterService {
 				gap = 7+gap;
 			}
 			cal.add(Calendar.DAY_OF_MONTH, gap);
-			appointments.add(new Appointments(doctorId, "TM"+userId, new SimpleDateFormat("yyyy-MM-dd").format(cal.getTime()), s.getSlots()));
+			appointments.add(new Appointments(doctorId, userId, new SimpleDateFormat("yyyy-MM-dd").format(cal.getTime()), s.getSlots()));
 		}
 		//System.out.println("level3");
 		List<Appointments> presentAppointments = adao.getAppointmentsByDoctor(doctorId);
@@ -110,6 +112,7 @@ public class ReporterServiceImpl implements ReporterService {
 			}
 			availableAppointments.add(a);
 		}
+		//System.out.println("level4");
 		return removeLeave(availableAppointments, doctorId);
 		
 	}
@@ -161,6 +164,21 @@ public class ReporterServiceImpl implements ReporterService {
 	@Override
 	public List<Leave> getLeaveByDoctor(String doctorId) {
 		return leaveDao.getAllLeaveByDoctor(doctorId);
+	}
+
+	@Override
+	public List<Appointments> reschedule(String aip) {
+		Appointments appointments = adao.getAppointmentById(aip);
+		List<Appointments> li = requestAppointment(appointments.getDoctorId(), appointments.getPatientId());
+		for(Appointments a:li){
+			a.setAppointmentId(aip);
+		}
+		return li;
+	}
+
+	@Override
+	public String updateAppointment(Appointments a) {
+		return adao.updateAppointment(a);
 	}
 
 }

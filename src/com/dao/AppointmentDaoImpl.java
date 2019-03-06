@@ -47,4 +47,16 @@ public class AppointmentDaoImpl implements AppointmentDao {
 		return null;
 	}
 
+	@Override
+	public Appointments getAppointmentById(String aid) {
+		Session session = sf.getCurrentSession();
+		return (Appointments)session.get(Appointments.class, aid);
+	}
+
+	@Override
+	public String updateAppointment(Appointments a) {
+		sf.getCurrentSession().update(a);
+		return "success";
+	}
+
 }
