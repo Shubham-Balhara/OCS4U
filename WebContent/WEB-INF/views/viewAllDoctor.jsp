@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>ALL Doctor</title>
+<link rel="shortcut icon" type="image/png" href="/OCS/images/logo/logo4.png">
 </head>
 <body>
 <div class="albums-container container-fluid">
@@ -32,7 +33,7 @@
                             </div>
                         </a>
                         <div class="caption">
-                            <h2><b>${e.doctorName}</b></h2>
+                            <h2><b>Dr. ${e.doctorName}</b></h2>
                             <h4 style="color:#595959">&emsp;Specailization: ${e.specialization}</h4>
                             <h5 style="color:#595959">&emsp;Experience: ${e.yearsOfExperience}years</h5>
                             <h5><i><u>Contact:</u></i></h5>

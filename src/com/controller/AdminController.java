@@ -74,7 +74,7 @@ public class AdminController {
 	public String updateDoctorinDB(Doctor doctor ,Model m) {
 		administratorService.updateDoctor(doctor);
 		System.out.println(doctor);
-		m.addAttribute("msg","doctor updated sucessfully"+ doctor.getDoctorId() ) ;
+		m.addAttribute("msg","Dr.Id "+ doctor.getDoctorId()+ " || Dr."+ doctor.getDoctorName()+" updated sucessfully !!"  ) ;
 		return "doctorUpdated";
 	}
 	

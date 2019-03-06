@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<link rel="shortcut icon" type="image/png" href="/OCS/images/logo/logo4.png">
 </head>
 <body style="background-color: #f2f2f2">
 	<c:import url="base.jsp"></c:import>

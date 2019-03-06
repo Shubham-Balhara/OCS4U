@@ -17,6 +17,7 @@ body {
 }
 /* #tab tr:nth-child(even) { background-color: gray;} */
 </style>
+<link rel="shortcut icon" type="image/png" href="/OCS/images/logo/logo4.png">
 
 </head>
 <body>

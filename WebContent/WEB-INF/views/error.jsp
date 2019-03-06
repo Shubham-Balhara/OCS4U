@@ -17,6 +17,7 @@ body { background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAA
 .error-actions .btn { margin-right:10px; }
 </style>
 
+<link rel="shortcut icon" type="image/png" href="/OCS/images/logo/logo4.png">
 
 </head>
 <body>

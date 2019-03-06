@@ -15,7 +15,6 @@
 <meta name="google" content="nositelinkssearchbox" />
 <link href="http://html.iwthemes.com/mas/css/styles.css"
 	rel="stylesheet" media="screen">
-<link rel="shortcut icon" type="image/ico" href="img/favicon.ico" />
 <link rel="shortcut icon" type="image/png" href="/OCS/images/logo/logo4.png">
 </head>
 <body class="body-home">

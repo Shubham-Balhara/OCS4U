@@ -5,13 +5,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="shortcut icon" type="image/png" href="{%  static 'favicon.ico' %}"/>
+<!-- <link rel="shortcut icon" type="image/png" href="{%  static 'favicon.ico' %}"/> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="{% static 'music/style.css' %}"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    
+<link rel="shortcut icon" type="image/png" href="/OCS/images/logo/logo4.png">
 <title>OCS - Online Clinic System</title>
+<link rel="shortcut icon" type="image/png" href="/OCS/images/logo/logo4.png">
 </head>
 <body>
 <nav class="navbar navbar-inverse">

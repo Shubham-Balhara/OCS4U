@@ -72,6 +72,7 @@ body {
      background: url("/OCS/images/pulseRate.jpg") fixed;
     background-size: cover;
 }</style>
+<link rel="shortcut icon" type="image/png" href="/OCS/images/logo/logo4.png">
 </head>
 <div class="container">
             <form class="form-horizontal" role="form" action="addProfile" method="post">
