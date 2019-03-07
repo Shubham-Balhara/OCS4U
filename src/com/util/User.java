@@ -3,9 +3,11 @@ package com.util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bean.Counter;
 import com.bean.Credentials;
 import com.bean.Patient;
 import com.bean.Profile;
+import com.dao.CounterDao;
 import com.dao.CredentialsDao;
 import com.dao.PatientDao;
 import com.dao.ProfileDao;
@@ -18,8 +20,8 @@ public class User {
 	ProfileDao pdao ;
 	@Autowired
 	PatientDao patientdao;
-	
-	static int index = 10;
+	@Autowired
+	CounterDao counterDao;
 	
 	public Credentials login(Credentials credentials) {
 		Credentials credentials2 = cdao.getCredentialsById(credentials.getUserId());
@@ -54,7 +56,8 @@ public class User {
 	}
 
 	public String register(Profile profile) {
-		index++;
+		Counter c = counterDao.getCounter();
+		int index = c.getUserCount();
 		String id = "P"+profile.getFirstName().charAt(0)+profile.getLastName().charAt(0);
 		if(index<10){
 			id += "00"+index;
@@ -63,6 +66,8 @@ public class User {
 		}else{
 			id+=index;
 		}
+		c.setUserCount(index+1);
+		counterDao.updateCounter(c);
 		profile.setUserId(id);
 		if(pdao.addProfile(profile).equals("success")){
 			Credentials credentials = new Credentials(id, profile.getPassword(), "Patient", 0);

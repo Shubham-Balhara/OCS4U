@@ -5,6 +5,7 @@ import java.util.List;
 import com.bean.Appointments;
 import com.bean.Doctor;
 import com.bean.Leave;
+import com.bean.Report;
 
 public interface ReporterService {
 	public List<Doctor> viewAllDoctors(String date);
@@ -20,4 +21,6 @@ public interface ReporterService {
 	public Appointments getAppointmentByAid(String aid);
 	public List<Appointments> getUnallocatedAppointment();
 	public List<Appointments> reallocate(String appointmentId);
+	public List<Appointments> pendingReport();
+	public String addReport(Report r);
 }

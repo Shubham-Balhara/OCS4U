@@ -18,6 +18,8 @@ import com.bean.Appointments;
 import com.bean.Credentials;
 import com.bean.Doctor;
 import com.bean.Leave;
+import com.bean.Report;
+import com.dao.ReportDao;
 import com.service.AdministratorService;
 import com.service.PatientService;
 import com.service.ReporterService;
@@ -109,5 +111,16 @@ public class ReporterController {
 		m.addAttribute("msg", "appointment Rescheduled Successfully");
 		m.addAttribute("appointments", appointments);
 		return "appointmentBooked";
+	}
+	@RequestMapping("/pendingReport")
+	public String pendingReport(Model m){
+		List<Appointments> li = reporterService.pendingReport();
+		m.addAttribute("reports", li);
+		return "pendingReport";
+	}
+	@RequestMapping("/fillReport")
+	public String fillReport(Report report){
+		reporterService.addReport(report);
+		return "redirect:pendingReport";
 	}
 }

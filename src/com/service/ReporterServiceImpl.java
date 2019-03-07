@@ -12,12 +12,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bean.Appointments;
+import com.bean.Counter;
 import com.bean.Doctor;
 import com.bean.Leave;
+import com.bean.Report;
 import com.bean.Schedule;
 import com.dao.AppointmentDao;
+import com.dao.CounterDao;
 import com.dao.DoctorDao;
 import com.dao.LeaveDao;
+import com.dao.ReportDao;
 import com.dao.ScheduleDao;
 
 @Service
@@ -30,8 +34,10 @@ public class ReporterServiceImpl implements ReporterService {
 	DoctorDao doctorDao;
 	@Autowired
 	LeaveDao leaveDao;
-	static int index = 31;
-	static int lindex = 12;
+	@Autowired
+	ReportDao reportDao;
+	@Autowired
+	CounterDao counterDao;
 	
 	@Override
 	public List<Doctor> viewAllDoctors(String date) {
@@ -51,7 +57,8 @@ public class ReporterServiceImpl implements ReporterService {
 
 	@Override
 	public String addAppointment(Appointments a) {
-		index++;
+		Counter c = counterDao.getCounter();
+		int index = c.getAppointmentCount();
 		String id = "APT";
 		if(index<10){
 			id += "00"+index;
@@ -60,6 +67,8 @@ public class ReporterServiceImpl implements ReporterService {
 		}else{
 			id+=index;
 		}
+		c.setAppointmentCount(index+1);
+		counterDao.updateCounter(c);
 		if(a.getAppointmentId()==null)
 			a.setAppointmentId(id);
 		//System.out.println(a.getPatientId()+" patient id in reporterservice");
@@ -139,7 +148,8 @@ public class ReporterServiceImpl implements ReporterService {
 
 	@Override
 	public String addLeave(Leave leave) {
-		lindex++;
+		Counter c = counterDao.getCounter();
+		int lindex = c.getLeaveCount();
 		String id = "LEV";
 		if(lindex<10){
 			id += "00"+lindex;
@@ -148,6 +158,8 @@ public class ReporterServiceImpl implements ReporterService {
 		}else{
 			id+=lindex;
 		}
+		c.setLeaveCount(lindex+1);
+		counterDao.updateCounter(c);
 		leave.setLeaveId(id);
 		List<Appointments> appointments = adao.getAppointmentsByDoctor(leave.getDoctorId());
 		int status = 0;
@@ -201,6 +213,26 @@ public class ReporterServiceImpl implements ReporterService {
 	public List<Appointments> reallocate(String appointmentId) {
 		Appointments a = adao.getAppointmentById(appointmentId);
 		return null;
+	}
+
+	@Override
+	public List<Appointments> pendingReport() {
+		List<Appointments> appointments = adao.getAllAppointments();
+		List<Report> reports = reportDao.getAllReporter();
+		List<Appointments> pendingReports = new ArrayList<Appointments>();
+		String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+		for(Appointments a:appointments){
+			for(Report b:reports)
+				if(a.getAppointmentDate().compareTo(date)<0 && !(a.getAppointmentId().equals(b.getId()))){
+					pendingReports.add(a);
+				}
+		}
+		return pendingReports;
+	}
+
+	@Override
+	public String addReport(Report r) {
+		return reportDao.addReport(r);
 	}
 
 }

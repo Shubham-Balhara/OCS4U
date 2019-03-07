@@ -74,4 +74,10 @@ public class AppointmentDaoImpl implements AppointmentDao {
 		return c.list();
 	}
 
+	@Override
+	public List<Appointments> getAllAppointments() {
+		Query q = sf.getCurrentSession().createQuery("from Appointments");
+		return q.list();
+	}
+
 }

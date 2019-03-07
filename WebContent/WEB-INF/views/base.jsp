@@ -95,6 +95,11 @@
                             <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>&nbsp; UnAllocated Appointments
                         </a>
                     </li>
+                    <li>
+                        <a href="../reporter/pendingReport">
+                            <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>&nbsp; Pending Report
+                        </a>
+                    </li>
                 </c:when></c:choose>
                     <li>
                         <a href="../main/profile">

@@ -7,11 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bean.Appointments;
+import com.bean.Counter;
 import com.bean.Doctor;
 import com.bean.Patient;
 import com.dao.AppointmentDao;
 import com.dao.DoctorDao;
 import com.dao.ScheduleDao;
+import com.dao.CounterDao;
 
 @Service
 public class AdministratorServiceImpl implements AdministratorService {
@@ -21,10 +23,12 @@ public class AdministratorServiceImpl implements AdministratorService {
 	AppointmentDao appointmentDao;
 	@Autowired
 	ScheduleDao scheduledao;
-	static int index = 30;
+	@Autowired
+	CounterDao counterDao;
 	
 	public String addDoctor(Doctor d){
-		index++;
+		Counter c = counterDao.getCounter();
+		int index = c.getDoctorCount();
 		String id = "DM"+d.getDoctorName().charAt(0);
 		if(index<10){
 			id += "00"+index;
@@ -33,6 +37,8 @@ public class AdministratorServiceImpl implements AdministratorService {
 		}else{
 			id+=index;
 		}
+		c.setDoctorCount(index+1);
+		counterDao.updateCounter(c);
 		d.setDoctorId(id);
 		if(ddao.addDoctor(d).equals("success")){
 			return "success";
