@@ -31,7 +31,7 @@ public class ReporterServiceImpl implements ReporterService {
 	@Autowired
 	LeaveDao leaveDao;
 	static int index = 31;
-	static int lindex = 11;
+	static int lindex = 12;
 	
 	@Override
 	public List<Doctor> viewAllDoctors(String date) {
