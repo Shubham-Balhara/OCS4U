@@ -11,60 +11,7 @@
 <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 <head>
-<script type="text/javascript">
-$(function(){
-	$.validator.setDefaults({
-		highlight: function(element){
-			$(element)
-			.closest('.form-group')
-			.addClass('has-error')
-		},
-		unhighlight: function(element){
-			$(element)
-			.closest('.form-group')
-			.removeClass('has-error')
-		}
-	});
-	
-	$.validate({
-		rules:
-		{	
-		    password: "required",
-			birthDate: "required",
-			weight: {
-			    required:true,
-			    number:true
-			},
-			height:  {
-			    required:true,
-			    number:true
-			},
-			email: {
-				required: true,
-				email: true
-			}
-		},
-			messages:{			
-				email: {
-				required: true,
-				email: true
-			}
-		},
-				password: {
-					required: " Please enter password"
-				},
-				birthDate: {
-					required: " Please enter birthdate"
-				},
-				email: {
-					required: ' Please enter email',
-					email: ' Please enter valid email'
-				},
-			
-			}
-			
-	});
-});</script>
+
 <!--Custom styles-->
 <link rel="stylesheet" type="text/css" href="/OCS/css/signUp.css">
 <style type="text/css">
@@ -73,6 +20,16 @@ body {
     background-size: cover;
 }</style>
 <link rel="shortcut icon" type="image/png" href="/OCS/images/logo/logo4.png">
+<script type="text/javascript">
+function isNumberKey(evt)
+{
+	var charCode = (evt.which) ? evt.which : evt.keyCode;
+	if (charCode != 46 && charCode > 31 
+	&& (charCode < 48 || charCode > 57))
+	return false;
+	return true;
+}  
+</script>
 </head>
 <div class="container">
             <form class="form-horizontal" role="form" action="addProfile" method="post">
@@ -111,7 +68,7 @@ body {
                 <div class="form-group">
                     <label for="phoneNumber" class="col-sm-3 control-label">Phone number </label>
                     <div class="col-sm-9">
-                        <input type="phoneNumber" id="phoneNumber" placeholder="eg.98xxxxxx12" class="form-control"  name="mobileNumber" required>
+                        <input type="phoneNumber" id="phoneNumber" placeholder="eg.98xxxxxx12" class="form-control"  name="mobileNumber"   onkeypress="return isNumberKey(event)" min="10" maxlength="10" title="Accept number only*"required>
                         <span class="help-block">Your phone number won't be disclosed anywhere </span>
                     </div>
                 </div>
@@ -142,7 +99,7 @@ body {
                               <div class="form-group">
                     <label for="pincode" class="col-sm-3 control-label">PinCode</label>
                     <div class="col-sm-9">
-                        <input type="text" id="pincode" placeholder="eg.121xx1" class="form-control" name="pincode" required autofocus>
+                        <input type="text" id="pincode" placeholder="eg.121xx1" class="form-control" name="pincode" required maxlength="10">
                     </div>
                 </div>
                 <div class="form-group">
@@ -151,12 +108,12 @@ body {
                         <div class="row">
                             <div class="col-sm-4">
                                 <label class="radio-inline">
-                                    <input type="radio" id="femaleRadio" name="gender" value="female">Female
+                                    <input type="radio" id="femaleRadio" name="gender" value="female" required>Female
                                 </label>
                             </div>
                             <div class="col-sm-4">
                                 <label class="radio-inline">
-                                    <input type="radio" id="maleRadio" name="gender"  value="male">Male
+                                    <input type="radio" id="maleRadio" name="gender"  value="male" required>Male
                                 </label>
                             </div>
                         </div>

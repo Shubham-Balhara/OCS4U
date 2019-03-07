@@ -9,72 +9,8 @@
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
 <link rel="shortcut icon" type="image/png" href="/OCS/images/logo/logo4.png">
-
 <head>
-<script type="text/javascript">
-$(function(){
-	$.validator.setDefaults({
-		highlight: function(element){
-			$(element)
-			.closest('.form-group')
-			.addClass('has-error')
-		},
-		unhighlight: function(element){
-			$(element)
-			.closest('.form-group')
-			.removeClass('has-error')
-		}
-	});
-	
-	$.validate({
-		rules:
-		{	
-		    password: "required",
-			birthDate: "required",
-			weight: {
-			    required:true,
-			    number:true
-			},
-			height:  {
-			    required:true,
-			    number:true
-			},
-			email: {
-				required: true,
-				email: true
-			}
-		},
-			messages:{			
-				email: {
-				required: true,
-				email: true
-			}
-		},
-				password: {
-					required: " Please enter password"
-				},
-				birthDate: {
-					required: " Please enter birthdate"
-				},
-				email: {
-					required: ' Please enter email',
-					email: ' Please enter valid email'
-				},
-				weight: {
-					required: " Please enter your weight",
-					number: " Only numbers allowed"
-				},
-				height: {
-					required: " Please enter your height",
-					number: " Only numbers allowed"
-				},
-			}
-			
-	});
-});</script>
-<!--Custom styles-->
 <link rel="stylesheet" type="text/css" href="/OCS/css/signUp.css">
 <style type="text/css">
 body {
@@ -82,7 +18,28 @@ body {
     background-size: cover;
 }</style>
 
-</head><body>
+<script type="text/javascript"language="javascript">  
+   function CompareDate() {  
+       var doj =document.getElementById("dateOfJoining").value;
+       var dob =document.getElementById("birthDate").value;
+     
+       if (doj <= dob) {  
+            alert("Date of joining must be greater than Date of Birth ");  
+        }
+          
+    } 
+   
+	function isNumberKey(evt)
+	{
+		var charCode = (evt.which) ? evt.which : evt.keyCode;
+		if (charCode != 46 && charCode > 31 
+		&& (charCode < 48 || charCode > 57))
+		return false;
+		return true;
+	}  
+</script>
+</head>
+<body>
 <h4 align="center" style="color: red;">${msg }</h4>
 
 <div class="container">
@@ -119,7 +76,7 @@ body {
                 <div class="form-group">
                     <label for="phoneNumber" class="col-sm-3 control-label">Phone number </label>
                     <div class="col-sm-9">
-                        <input type="phoneNumber" id="phoneNumber" placeholder="eg.98xxxxxx12" class="form-control"  name="mobileNumber" required>
+                        <input type="phoneNumber" id="phoneNumber" placeholder="eg.98xxxxxx12" class="form-control"  name="mobileNumber"  onkeypress="return isNumberKey(event)" maxlength="10" title="Accept number only*" required>
                         <span class="help-block">Your phone number won't be disclosed anywhere </span>
                     </div>
                 </div>
@@ -127,18 +84,44 @@ body {
                 <div class="form-group">
                     <label for="qualification" class="col-sm-3 control-label">Qualification* </label>
                     <div class="col-sm-9">
-                        <input type="text" id="qualification" placeholder="eg..MBBS,BEMS.." class="form-control" name="qualification" required>
+                          <label for="qualification">Select Highest Qualification :</label>
+                             <select class="form-control form-control-lg" id="qualification" name="qualification" title="required field" required>
+                                   <option value="">None</option>
+                                  <option value="MBBS - Bachelor of Medicine, Bachelor of Surgery" >MBBS - Bachelor of Medicine, Bachelor of Surgery</option>
+                                  <option value="BDS - Bachelor of Dental Surgery" >BDS - Bachelor of Dental Surgery</option>
+                                   <option value="BAMS - Bachelor of Ayurvedic Medicine and Surgery" >BAMS - Bachelor of Ayurvedic Medicine and Surgery</option>
+                                   <option value="BUMS - Bachelor of Unani Medicine and Surgery" >BUMS - Bachelor of Unani Medicine and Surgery</option>
+                                    <option value="BHMS - Bachelor of Homeopathy Medicine and Surgery" >BHMS - Bachelor of Homeopathy Medicine and Surgery</option>
+                                    <option value="Bachelor of Occupational Therapy" > Bachelor of Occupational Therapy </option>
+                                    <option value="Bachelor of Science in Biotechnology" >Bachelor of Science in Biotechnology</option>
+                                    <option value="Bachelor of Technology in Biomedical Engineering" >Bachelor of Technology in Biomedical Engineering</option>
+                                    <option value="Bachelor of Science in Microbiology (Non-Clinical)" >Bachelor of Science in Microbiology (Non-Clinical)</option>
+                                     </select>
                     </div>
-                </div>
+                </div><br>
                 <div class="form-group">
                     <label for="specialization" class="col-sm-3 control-label">Specialization* </label>
                     <div class="col-sm-9">
-                        <input type="text" id="specialization" placeholder="eg.Gastro,Ortho,Dentist" class="form-control" name="specialization" required>
-                    </div>
-                </div><div class="form-group">
+                             <select class="form-control form-control-lg" id="specialization" name="specialization" title="required field" required>
+                               <option value="">None</option>
+                               <option value="General Surgeons"  >General Surgeons </option>
+                               <option value="Emergency Medicine Specialists" >Emergency Medicine Specialists </option>
+                               <option value="Family Physicians" >Family Physicians </option>
+                               <option value="Gastroenterologists" >Gastroenterologists </option>
+                               <option value="Cardiologists" >Cardiologists </option>
+                               <option value="Allergists/Immunologists" >Allergists/Immunologists </option>
+                               <option value="Anesthesiologists" >Anesthesiologists</option>
+                               <option value="Infectious Disease Specialists" >Infectious Disease Specialists </option>
+                               <option value="Plastic Surgeons" >Plastic Surgeons</option>
+                               <option value="Radiologists" >Radiologists </option>
+                               <option value="General Dentist" >General Dentist</option>
+                             </select>                
+                  </div>
+                </div><br>
+                <div class="form-group">
                     <label for="yearsOfExperience" class="col-sm-3 control-label">Years Of Experience* </label>
                     <div class="col-sm-9">
-                        <input type="text" id="yearsOfExperience" placeholder="eg..5years practice" class="form-control" name="yearsOfExperience" required>
+                        <input type="number" id="yearsOfExperience" placeholder="eg..5years practice" class="form-control" name="yearsOfExperience"   min="0" max="50"required>
                     </div>
                 </div>
                 
@@ -167,9 +150,9 @@ body {
                     </div>
                 </div>
                               <div class="form-group">
-                    <label for="pincode" class="col-sm-3 control-label">PinCode</label>
+                    <label for="pincode" class="col-sm-3 control-label"  >PinCode</label>
                     <div class="col-sm-9">
-                        <input type="text" id="pincode" placeholder="eg.121xx1" class="form-control" name="pincode" required autofocus>
+                        <input type="text" id="pincode" placeholder="eg.121xx1" class="form-control" name="pincode" min="3" max="10" required>
                     </div>
                 </div>
                 <div class="form-group">
@@ -178,12 +161,12 @@ body {
                         <div class="row">
                             <div class="col-sm-4">
                                 <label class="radio-inline">
-                                    <input type="radio" id="femaleRadio" name="gender" value="female">Female
+                                    <input type="radio" id="femaleRadio" name="gender" value="female" required>Female
                                 </label>
                             </div>
                             <div class="col-sm-4">
                                 <label class="radio-inline">
-                                    <input type="radio" id="maleRadio" name="gender"  value="male">Male
+                                    <input type="radio" id="maleRadio" name="gender"  value="male" required>Male
                                 </label>
                             </div>
                         </div>
@@ -194,7 +177,7 @@ body {
                         <span class="help-block">*Required fields</span>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block">ADD DOCTOR</button>
+                <button type="submit" class="btn btn-primary btn-block" onclick="CompareDate()">ADD DOCTOR</button>
             </form> <!-- /form -->
         </div> <!-- ./container -->
         </body>
