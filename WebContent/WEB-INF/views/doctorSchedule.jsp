@@ -68,13 +68,27 @@
 		                        </c:choose>
                             </h5>
                         </div>
-                        <form action="bookSchedule" method="post">
-							<input type="text" name="doctorId" style="visibility: hidden;" value="${e.doctorId }">
-							<input type="text" name="patientId" style="visibility: hidden;" value="${e.patientId }">
-							<input type="text" name="appointmentDate" style="visibility: hidden;" value="${e.appointmentDate }">
-							<input type="text" name="appointmentSlot" style="visibility: hidden;" value="${e.appointmentSlot }">
-							<input type="submit" value="Book Schedule" class="btn btn-primary btn-sm">
-						</form>
+                        <c:choose>
+                        	<c:when test="${user.userType ==\"Reporter\" }">
+                        		<form action="bookReschedule" method="post">
+                        			<input type="text" name="appointmentId" style="visibility: hidden;" value="${e.appointmentId }">
+									<input type="text" name="doctorId" style="visibility: hidden;" value="${e.doctorId }">
+									<input type="text" name="patientId" style="visibility: hidden;" value="${e.patientId }">
+									<input type="text" name="appointmentDate" style="visibility: hidden;" value="${e.appointmentDate }">
+									<input type="text" name="appointmentSlot" style="visibility: hidden;" value="${e.appointmentSlot }">
+									<input type="submit" value="Book Schedule" class="btn btn-primary btn-sm">
+								</form>
+                        	</c:when>
+                        	<c:otherwise>
+                        		<form action="bookSchedule" method="post">
+									<input type="text" name="doctorId" style="visibility: hidden;" value="${e.doctorId }">
+									<input type="text" name="patientId" style="visibility: hidden;" value="${e.patientId }">
+									<input type="text" name="appointmentDate" style="visibility: hidden;" value="${e.appointmentDate }">
+									<input type="text" name="appointmentSlot" style="visibility: hidden;" value="${e.appointmentSlot }">
+									<input type="submit" value="Book Schedule" class="btn btn-primary btn-sm">
+								</form>
+                        	</c:otherwise>
+                        </c:choose>
                     </div>
                 </div>
             </c:forEach>

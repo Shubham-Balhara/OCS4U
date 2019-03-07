@@ -30,8 +30,8 @@ public class ReporterServiceImpl implements ReporterService {
 	DoctorDao doctorDao;
 	@Autowired
 	LeaveDao leaveDao;
-	static int index = 28;
-	static int lindex = 5;
+	static int index = 31;
+	static int lindex = 11;
 	
 	@Override
 	public List<Doctor> viewAllDoctors(String date) {
@@ -184,6 +184,23 @@ public class ReporterServiceImpl implements ReporterService {
 	@Override
 	public Appointments getAppointmentByAid(String aid) {
 		return adao.getAppointmentById(aid);
+	}
+
+	@Override
+	public List<Appointments> getUnallocatedAppointment() {
+		List<Leave> leaves = leaveDao.getLeaveByStatus();
+		//System.out.println("leaves - "+leaves);
+		List<Appointments> appointments = new ArrayList<Appointments>();
+		for(Leave l:leaves){
+			appointments.addAll(adao.getAppointmentsBetweenDates(l.getLeaveFrom(),l.getLeaveTo(),l.getDoctorId()));
+		}
+		return appointments;
+	}
+
+	@Override
+	public List<Appointments> reallocate(String appointmentId) {
+		Appointments a = adao.getAppointmentById(appointmentId);
+		return null;
 	}
 
 }

@@ -18,4 +18,6 @@ public interface ReporterService {
 	public List<Appointments> reschedule(String aip);
 	public String updateAppointment(Appointments a);
 	public Appointments getAppointmentByAid(String aid);
+	public List<Appointments> getUnallocatedAppointment();
+	public List<Appointments> reallocate(String appointmentId);
 }

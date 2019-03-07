@@ -52,10 +52,21 @@
                             <h5 style="color:#595959">&emsp;Mobile: ${e.mobileNumber}</h5>
                             <h5 style="color:#595959">&emsp;Email: ${e.emailId}</h5>
                         </div>
-                        <form action="doctorSchedule" method="post">
-							<input type="text" value="${e.doctorId }" style="visibility: hidden;" name="doctorId">
-							<input type="submit" value="Check Schedule" class="btn btn-primary btn-sm">
-						</form>
+                        <c:choose>
+                        	<c:when test="${user.userType == \"Reporter\" }">
+                        		<form action="../doctorReschedule" method="post">
+                        			<input type="text" value="${appointmentId }" style="visibility: hidden;" name="appointmentId">
+									<input type="text" value="${e.doctorId }" style="visibility: hidden;" name="doctorId">
+									<input type="submit" value="Check Schedule" class="btn btn-primary btn-sm">
+								</form>
+                        	</c:when>
+                        	<c:otherwise>
+                        		<form action="doctorSchedule" method="post">
+									<input type="text" value="${e.doctorId }" style="visibility: hidden;" name="doctorId">
+									<input type="submit" value="Check Schedule" class="btn btn-primary btn-sm">
+								</form>
+                        	</c:otherwise>
+                       	</c:choose>
                     </div>
                 </div>
             </c:forEach>

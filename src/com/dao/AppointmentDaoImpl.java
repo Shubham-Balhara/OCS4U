@@ -2,9 +2,13 @@ package com.dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.LogicalExpression;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -57,6 +61,17 @@ public class AppointmentDaoImpl implements AppointmentDao {
 	public String updateAppointment(Appointments a) {
 		sf.getCurrentSession().update(a);
 		return "success";
+	}
+
+	@Override
+	public List<Appointments> getAppointmentsBetweenDates(String from, String to,String doctorId) {
+		Session session = sf.getCurrentSession();
+		Criteria c = session.createCriteria(Appointments.class);
+		Criterion date = Restrictions.between("appointmentDate", from, to);
+		Criterion id = Restrictions.eq("doctorId", doctorId);
+		LogicalExpression andEx = Restrictions.and(date, id);
+		c.add(andEx);
+		return c.list();
 	}
 
 }

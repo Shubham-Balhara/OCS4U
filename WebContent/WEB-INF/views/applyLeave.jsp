@@ -29,7 +29,7 @@
 </select></td></tr>
 <tr><td><label for="fromDate">From</label></td><td><input type="date" name="leaveFrom"></td></tr>
 <tr><td><label for="toDate">To</label></td><td><input type="date" name="leaveTo"></td></tr>
-<tr><td><label for="reason">Reason*</label></td><td><textarea class="form-control rounded-0" id="reason" rows="5" required></textarea></td></tr>
+<tr><td><label for="reason">Reason*</label></td><td><textarea class="form-control rounded-0" id="reason" rows="5" required name="reason"></textarea></td></tr>
 <tr><td>  <button type="submit" class="btn btn-primary">Apply</button></td></tr>
 </table>
 </form>

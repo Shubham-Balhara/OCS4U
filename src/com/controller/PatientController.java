@@ -1,6 +1,7 @@
 package com.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -33,6 +34,14 @@ public class PatientController {
 	// -------Patienthome
 	@RequestMapping("/home")
 	public String home(Model m,HttpSession session) {
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(new Date());
+		String today = "";
+		//String time = "";
+		today += cal.get(Calendar.YEAR);
+		today += "-"+((cal.get(Calendar.MONTH)+1<10)?("0"+(cal.get(Calendar.MONTH)+1)):(cal.get(Calendar.MONTH)+1));
+		today += "-"+((cal.get(Calendar.DAY_OF_MONTH)<10)?("0"+cal.get(Calendar.DAY_OF_MONTH)):(cal.get(Calendar.DAY_OF_MONTH)));
+		m.addAttribute("today", today);
 		List<Appointments> li = patientService.getAppointmentsById("TM"+((Credentials)session.getAttribute("user")).getUserId());
 		m.addAttribute("appointmentList", li);
 		return "home";

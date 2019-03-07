@@ -1,5 +1,7 @@
 package com.controller;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -44,6 +46,14 @@ public class MainController {
 	public String home(Model m){
 		Credentials user = ((Credentials)session.getAttribute("user"));
 		if(user.getUserType().equals("Patient")){
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(new Date());
+			String today = "";
+			//String time = "";
+			today += cal.get(Calendar.YEAR);
+			today += "-"+((cal.get(Calendar.MONTH)+1<10)?("0"+(cal.get(Calendar.MONTH)+1)):(cal.get(Calendar.MONTH)+1));
+			today += "-"+((cal.get(Calendar.DAY_OF_MONTH)<10)?("0"+cal.get(Calendar.DAY_OF_MONTH)):(cal.get(Calendar.DAY_OF_MONTH)));
+			m.addAttribute("today", today);
 			List<Appointments> li = patientService.getAppointmentsById("TM"+user.getUserId());
 			m.addAttribute("appointmentList", li);
 		}else{
@@ -89,12 +99,13 @@ public class MainController {
 	//-----logout
 	@RequestMapping("/logout")
 	public String logout(HttpSession session,Model m){
-		String userId = ((Credentials)session.getAttribute("user")).getUserId();
-		if(u.logout(userId)){
-			m.addAttribute("msg", "logged out successfully");
-			return "index";
+		Credentials user = ((Credentials)session.getAttribute("user"));
+		if(user == null){
+			m.addAttribute("msg", "login first");
+			return "login";
 		}else{
-			m.addAttribute("msg","already logged out");
+			u.logout(user.getUserId());
+			m.addAttribute("msg","logged out !");
 			return "login";
 		}
 	}

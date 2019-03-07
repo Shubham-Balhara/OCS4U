@@ -90,6 +90,11 @@
                             <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&nbsp; View Leave
                         </a>
                     </li>
+                    <li>
+                        <a href="../reporter/unalloted">
+                            <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>&nbsp; UnAllocated Appointments
+                        </a>
+                    </li>
                 </c:when></c:choose>
                     <li>
                         <a href="../main/profile">

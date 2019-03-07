@@ -1,35 +1,26 @@
-<%@page import="com.bean.Credentials"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" errorPage="error.jsp" %>
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+    pageEncoding="ISO-8859-1"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<link rel="shortcut icon" type="image/png" href="/OCS/images/logo/logo4.png">
 </head>
 <body>
+<c:import url="base.jsp"></c:import>
 <div class="albums-container container-fluid">
     <c:choose>
-    <c:when test="${appointmentList != null }">
+    <c:when test="${appointments != null }">
     <div class="row">
         <div class="col-sm-12">
-            <h3><b>Appointments</b></h3>
+            <h3><b>Unallocated Appointments</b></h3>
         </div>
-            <c:forEach items="${appointmentList }" var="e">
-                <c:choose>
-                	<c:when test="${e.appointmentDate == today }">
-                		<div class="col-sm-4 col-lg-3" style="background-color: red;">
-                	</c:when>
-                	<c:otherwise>
-                		<div class="col-sm-4 col-lg-3">
-                	</c:otherwise>
-                </c:choose>
+            <c:forEach items="${appointments }" var="e">
+                <div class="col-sm-4 col-lg-3">
                     <div class="thumbnail">
-                        <a href="../appointment/reschedule/${e.appointmentId }">
-                            <div style="height: 200px">
+                        <a href="#">
+                            <div style="height: 200px;">
                                 <center><img src="/OCS/images/appointment.gif" class="img-responsive" style="height: 190px"></center>
                                 <hr>
                             </div>
@@ -64,14 +55,14 @@
                         	</c:when>
                         </c:choose>
                         </div>
-                        <a href="../appointment/reschedule/${e.appointmentId }" class="btn btn-primary btn-sm" role="button">Re-Schedule</a>
+                        <a href="../reporter/reallocate/${e.appointmentId }" class="btn btn-primary btn-sm" role="button">Re-Allocate</a>
                     </div>
                 </div>
             </c:forEach>
             </c:when>
         <c:otherwise>
             <div class="jumbotron">
-                <h2><b>No Appointments</b></h2>
+                <h2><b>No Unallocated Appointments</b></h2>
             </div>
         </c:otherwise>
         </c:choose>

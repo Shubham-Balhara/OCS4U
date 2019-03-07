@@ -37,4 +37,10 @@ public class LeaveDaoImpl implements LeaveDao {
 		return false;
 	}
 
+	@Override
+	public List<Leave> getLeaveByStatus() {
+		Query q = sessionFactory.getCurrentSession().createQuery("from Leave where status=1");
+		return q.list();
+	}
+
 }

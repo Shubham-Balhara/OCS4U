@@ -11,4 +11,5 @@ public interface AppointmentDao {
 	public String deleteAppointment(Appointments a);
 	public Appointments getAppointmentById(String aid);
 	public String updateAppointment(Appointments a);
+	public List<Appointments> getAppointmentsBetweenDates(String from,String to,String doctorId);
 }
