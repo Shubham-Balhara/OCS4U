@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bean.Appointments;
 import com.bean.Credentials;
@@ -122,5 +123,21 @@ public class ReporterController {
 	public String fillReport(Report report){
 		reporterService.addReport(report);
 		return "redirect:pendingReport";
+	}
+	@RequestMapping("/history")
+	public String history(){
+		return "history";
+	}
+	@RequestMapping("/reportHistory")
+	public @ResponseBody String reportHistory(String patientId){
+		List<Report> reports = reporterService.getReportByPatient(patientId);
+		String data = "<table class='table'>";
+		int index = 0;
+		for(Report r:reports){
+			index++;
+			data += "<tr>"+"<th scope='row'>"+index+"</th>"+"<td>"+r.getId()+"</td>"+"<td>"+r.getDoctor()+"</td>"+"<td>"+r.getPatient()+"</td>"+"<td>"+r.getAppointmentDate()+"</td>"+"<td>"+r.getappointmentSlot()+"</td>"+"<td>"+r.getAilments()+"</td>"+"<td>"+r.getMedicines()+"</td>"+"</tr>";
+		}
+		data += "</table>";
+		return data;
 	}
 }

@@ -223,19 +223,31 @@ public class ReporterServiceImpl implements ReporterService {
 		System.out.println("reports " + reports);
 		List<Appointments> pendingReports = new ArrayList<Appointments>();
 		String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+		
+		outter:
 		for(Appointments a:appointments){
 			for(Report b:reports)
-				if(a.getAppointmentDate().compareTo(date)<0 && !(a.getAppointmentId().equals(b.getId()))){
-					pendingReports.add(a);
+				if(a.getAppointmentDate().compareTo(date)>=0 || (a.getAppointmentId().equals(b.getId()))){
+					continue outter;
 				}
+			pendingReports.add(a);
 		}
-		System.out.println(pendingReports);
 		return pendingReports;
 	}
 
 	@Override
 	public String addReport(Report r) {
 		return reportDao.addReport(r);
+	}
+
+	@Override
+	public Report getReportById(String reportId) {
+		return reportDao.getReportById(reportId);
+	}
+
+	@Override
+	public List<Report> getReportByPatient(String pid) {
+		return reportDao.getReportByPatient(pid);
 	}
 
 }

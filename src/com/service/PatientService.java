@@ -6,6 +6,7 @@ import java.util.Map;
 import com.bean.Appointments;
 import com.bean.Doctor;
 import com.bean.Patient;
+import com.bean.Report;
 
 public interface PatientService {
 	public String addAilmentDetail(Patient p);
@@ -17,4 +18,5 @@ public interface PatientService {
 	public Map<Appointments, Patient>viewAppointmentDetail(String patientid,String date);
 	public List<Appointments> getAppointmentsById(String patientId);
 	public List<Appointments> getReportById(String patientId);
+	public List<Report> getReportByPatient(String patientId);
 }

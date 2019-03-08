@@ -23,4 +23,6 @@ public interface ReporterService {
 	public List<Appointments> reallocate(String appointmentId);
 	public List<Appointments> pendingReport();
 	public String addReport(Report r);
+	public Report getReportById(String reportId);
+	public List<Report> getReportByPatient(String pid);
 }

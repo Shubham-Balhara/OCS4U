@@ -17,7 +17,7 @@
 <h2 align="center" style="margin-top: 30px;"><b>OCS</b> - Online Clinic System</h2>
 <h3 align="center">Report of Diagnosis</h3><hr>
 <table align="center">
-<tr><td>Appointment Id: </td><td>${report.appointmentId }</td></tr>
+<tr><td>Appointment Id: </td><td>${report.id }</td></tr>
 <tr><td>User ID: </td><td>${user.userId }</td></tr>
 <tr><td>Appointment Date: </td><td>${report.appointmentDate }</td></tr>
 <tr><td>Appointment Time: </td><td>
@@ -48,6 +48,14 @@
                         	</c:when>
 </c:choose>
 </td></tr>
+</table><hr>
+<table align="center">
+<tr><td><h3>Ailment: </h3></td></tr>
+<tr><td> ${report.ailments }</td></tr>
+</table><hr>
+<table align="center">
+<tr><td><h3>Medicine: </h3></td></tr>
+<tr><td> ${report.medicines }<td></tr>
 </table><hr>
 </div>
 <script type="text/javascript">

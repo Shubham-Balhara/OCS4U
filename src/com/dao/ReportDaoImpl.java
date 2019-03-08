@@ -33,4 +33,11 @@ public class ReportDaoImpl implements ReportDao {
 		return q.list();
 	}
 
+	@Override
+	public List<Report> getReportByPatient(String pid) {
+		Query q = sf.getCurrentSession().createQuery("from Report where patient=:pid");
+		q.setParameter("pid", pid);
+		return q.list();
+	}
+
 }

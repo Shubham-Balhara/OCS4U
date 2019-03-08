@@ -57,7 +57,7 @@
                         	</c:when>
                         </c:choose>
                         </div>
-                        <a href="../patient/printReport/${e.appointmentId }" class="btn btn-primary btn-sm" role="button">Print</a>
+                        <a href="../patient/printReport/${e.id }" class="btn btn-primary btn-sm" role="button">Print</a>
                     </div>
                 </div>
             </c:forEach>

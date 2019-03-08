@@ -9,9 +9,10 @@
 </head>
 <body>
 <script type="text/javascript">
-	function fun() {
-		document.getElementById("btn1").style.visibility = hidden;
-		document.getElementById("report_form").style.visibility = visible;
+	function fun(id) {
+		document.getElementById(id).style.visibility = "hidden";
+		var formId = "form"+id;
+		document.getElementById(formId).style.visibility = "visible";
 	}
 </script>
 <c:import url="base.jsp"/>
@@ -61,15 +62,17 @@
                         	</c:when>
                         </c:choose>
                         </div>
-                        <button class="btn btn-success" id="btn1" onclick="fun()">Fill Report</button>
-                        <div id="report_form">
+                        <button class="btn btn-success" id="${e.appointmentId }" onclick="fun(this.id)">Fill Report</button>
+                        <div id="form${e.appointmentId }" style="visibility: hidden;">
                         	<form action="fillReport" method="post">
-                        		<input type="text" value="${e.appointmentId }" style="visibility: hidden;" name="id">
-                        		<input type="text" value="${e.doctorId }" style="visibility: hidden;" name="doctor">
-                        		<input type="text" value="${e.PatientId }" style="visibility: hidden;" name="patient">
-                        		<input type="text" value="${e.appointmentDate }" style="visibility: hidden;" name="appointmentDate">
-                        		<input type="text" value="${e.appointmentSlot }" style="visibility: hidden;" name="appointmentSlot">
-                        		<input type="text" name="ailments" required>
+                        		<input type="text" value="${e.appointmentId }" style="display: none;" name="id">
+                        		<input type="text" value="${e.doctorId }" style="display: none;" name="doctor">
+                        		<input type="text" value="${e.patientId }" style="display: none;" name="patient">
+                        		<input type="text" value="${e.appointmentDate }" style="display: none;" name="appointmentDate">
+                        		<input type="text" value="${e.appointmentSlot }" style="display: none;" name="appointmentSlot">
+                        		<label for="aliments">Ailment: </label>
+                        		<input type="text" name="ailments" required><br>
+                        		<label for="medicines">Medicines: </label>
                         		<input type="text" name="medicines" required>
                         		<input type="submit" value="Fill">
                         	</form>

@@ -8,4 +8,5 @@ public interface ReportDao {
 	public String addReport(Report r);
 	public Report getReportById(String id);
 	public List<Report> getAllReporter();
+	public List<Report> getReportByPatient(String pid);
 }

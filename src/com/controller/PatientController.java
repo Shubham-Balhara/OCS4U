@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bean.Appointments;
 import com.bean.Credentials;
+import com.bean.Report;
 import com.dao.AppointmentDao;
 import com.service.AdministratorService;
 import com.service.PatientService;
@@ -62,14 +63,14 @@ public class PatientController {
 	@RequestMapping("/report")
 	public String getReport(Model m,HttpSession session){
 		String patientId = "TM"+((Credentials)session.getAttribute("user")).getUserId();
-		List<Appointments> li = patientService.getReportById(patientId);
+		List<Report> li = patientService.getReportByPatient(patientId);
 		m.addAttribute("appointmentList", li);
 		return "reportPage";
 	}
 	@RequestMapping("/printReport/{reportId}")
 	public String printReport(@PathVariable("reportId")String reportId, Model m,HttpSession session){
-		Appointments appointments = reporterService.getAppointmentByAid(reportId);
-		m.addAttribute("report", appointments);
+		Report report = reporterService.getReportById(reportId);
+		m.addAttribute("report", report);
 		return "printReport";
 	}
 }

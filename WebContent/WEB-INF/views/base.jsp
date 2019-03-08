@@ -80,6 +80,11 @@
                     </li>
                 </c:when>
                 <c:when test="${user.userType == \"Reporter\" }">
+                	<li>
+                        <a href="../reporter/history">
+                            <span class="glyphicon glyphicon-copy" aria-hidden="true"></span>&nbsp; Patient History
+                        </a>
+                    </li>
                     <li>
                         <a href="../reporter/applyLeave">
                             <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>&nbsp; Apply Leave

@@ -17,13 +17,17 @@ import org.springframework.stereotype.Service;
 import com.bean.Appointments;
 import com.bean.Doctor;
 import com.bean.Patient;
+import com.bean.Report;
 import com.dao.AppointmentDao;
 import com.dao.DoctorDao;
+import com.dao.ReportDao;
 
 @Service
 public class PatientServiceImpl implements PatientService {
 	@Autowired
 	DoctorDao ddao;
+	@Autowired
+	ReportDao reportDao;
 	@Autowired
 	AppointmentDao appointmentDao;
 
@@ -96,6 +100,11 @@ public class PatientServiceImpl implements PatientService {
 			}
 		}
 		return appointments;
+	}
+
+	@Override
+	public List<Report> getReportByPatient(String patientId) {
+		return reportDao.getReportByPatient(patientId);
 	}
 
 }
