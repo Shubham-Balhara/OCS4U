@@ -218,7 +218,9 @@ public class ReporterServiceImpl implements ReporterService {
 	@Override
 	public List<Appointments> pendingReport() {
 		List<Appointments> appointments = adao.getAllAppointments();
+		System.out.println("appointments " + appointments);
 		List<Report> reports = reportDao.getAllReporter();
+		System.out.println("reports " + reports);
 		List<Appointments> pendingReports = new ArrayList<Appointments>();
 		String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 		for(Appointments a:appointments){
@@ -227,6 +229,7 @@ public class ReporterServiceImpl implements ReporterService {
 					pendingReports.add(a);
 				}
 		}
+		System.out.println(pendingReports);
 		return pendingReports;
 	}
 
