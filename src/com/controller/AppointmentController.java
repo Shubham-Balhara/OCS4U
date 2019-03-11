@@ -54,7 +54,7 @@ public class AppointmentController {
 		String userId = ((Credentials) session.getAttribute("user")).getUserId();
 		List<Appointments> appointments = reporterService.requestAppointment(doctorId,"TM"+userId);
 		String data = "<table class='table table-hover'>";
-		data+="<thead><tr><th>#</th><th>Doctor</th><th>Patient</th><th>Date</th><th>Slot</th><th><img onclick='getDoctor()' src='/OCS/images/icons/cancel.jpg' width='30px' height='30px'></th></tr></thead>";
+		data+="<thead><tr><th>#</th><th>Doctor</th><th>Patient</th><th>Date</th><th>Slot</th><th><img onclick='getDoctor()' src='/OCS/images/icons/cancel.jpg' width='30px' height='30px' class='img-circle'></th></tr></thead>";
 		int index = 0;
 		for(Appointments r:appointments){
 			index++;

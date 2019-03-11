@@ -4,12 +4,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script type="text/javascript" src="/OCS/script/unallocatedAppointments.js"></script>
+<link rel="shortcut icon" type="image/png" href="/OCS/images/logo/logo4.png">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
+<body onload="load()">
 <c:import url="base.jsp"></c:import>
 <div class="albums-container container-fluid">
+<div class="jumbotrone">
+<h4>${msg }</h4>
+</div>
     <c:choose>
     <c:when test="${appointments != null }">
     <div class="row">
@@ -55,7 +60,7 @@
                         	</c:when>
                         </c:choose>
                         </div>
-                        <a href="../reporter/reallocate/${e.appointmentId }" class="btn btn-primary btn-sm" role="button">Re-Allocate</a>
+                        <button class="btn btn-primary" onclick="getDoctor(this.value)" value="${e.appointmentId }">Re-Schedule</button>
                     </div>
                 </div>
             </c:forEach>
@@ -66,6 +71,8 @@
             </div>
         </c:otherwise>
         </c:choose>
+        <div id="content">
+        </div>
     </div>
 </div>
 </body>

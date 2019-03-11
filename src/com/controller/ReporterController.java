@@ -44,12 +44,6 @@ public class ReporterController {
 		return "home";
 	}
 	
-	@RequestMapping("/allDoctors")
-	public String viewAllDoctors(Model m){
-		m.addAttribute("doctors", reporterService.getAllDoctors());
-		return "allDoctors";
-	}
-	
 	@RequestMapping("/applyLeave")
 	public String applyLeave(Model m){
 		m.addAttribute("doctors", reporterService.getAllDoctors());
@@ -81,8 +75,8 @@ public class ReporterController {
 		m.addAttribute("appointments", appointments);
 		return "unallocatedAppointments";
 	}
-	@RequestMapping("/reallocate/{appointmentId}")
-	public String reallocate(@PathVariable("appointmentId")String appointmentId,HttpSession session,Model m){
+	@RequestMapping("/reallocate")
+	public @ResponseBody String reallocate(String appointmentId,HttpSession session){
 		Appointments a = reporterService.getAppointmentByAid(appointmentId);
 		Doctor doctor = administratorService.getDoctorById(a.getDoctorId());
 		List<Doctor> li = patientService.viewListOfDoctor(doctor.getSpecialization());
@@ -93,26 +87,51 @@ public class ReporterController {
 				doctors.add(d);
 			}
 		}
-		m.addAttribute("doctorList", doctors);
-		return "doctorResult";
+		String data = "<table class='table table-hover'>";
+		data+="<thead><tr><th>#</th><th>Doctor</th><th>Specialization</th><th>Qualification</th><th>Experience</th><th>Mobile</th><th>Email</th><th> </th></tr></thead>";
+		int index = 0;
+		for(Doctor r:li){
+			index++;
+			data += "<tbody><input type='text' value='"+a.getAppointmentId()+"' id='"+r.getDoctorId()+"' style='display: none;'>"
+					+ "<tr>"+"<th scope='row'>"+index+"</th>"
+					+"<td>"+r.getDoctorName()+"</td>"
+					+"<td>"+r.getSpecialization()+"</td>"
+					+"<td>"+r.getQualification()+"</td>"
+					+"<td>"+r.getYearsOfExperience()+"</td>"
+					+"<td>"+r.getmobileNumber()+"</td>"
+					+"<td>"+r.getEmailId()+"</td>"
+					+"<td><button onclick='checkSchedule(this.value)' value='"+ r.getDoctorId()+"'>Schedule</button></td>"+"</tr></tbody>";
+		}
+		data += "</table>";
+		return data;
 	}
 	@RequestMapping("/doctorReschedule")
-	public String reschedule(@RequestParam("doctorId")String doctorId,@RequestParam("appointmentId")String appointmentId,Model m){
+	public @ResponseBody String reschedule(String doctorId,String appointmentId,Model m){
 		Appointments a = reporterService.getAppointmentByAid(appointmentId);
 		List<Appointments> appointments = reporterService.requestAppointment(doctorId,a.getPatientId());
-		for(Appointments ap:appointments){
-			ap.setAppointmentId(a.getAppointmentId());
+		String data = "<table class='table table-hover'>";
+		data+="<thead><tr><th>#</th><th>Doctor</th><th>Patient</th><th>Date</th><th>Slot</th><th><button value='"+a.getAppointmentId()+"' onclick='getDoctor(this.value)'><img src='/OCS/images/icons/cancel.jpg' width='30px' height='30px' class='img-circle'></button></th></tr></thead>";
+		int index = 0;
+		for(Appointments r:appointments){
+			index++;
+			data += "<tbody><tr>"+"<th scope='row'>"+index+"</th>"
+					+ "<td><input type='text' id='appointmentId"+index+"' disabled='disabled' value='"+a.getAppointmentId()+"'></td>"
+						+ "<td><input type='text' id='doctorId"+index+"' disabled='disabled' value='"+r.getDoctorId()+"'></td>"
+								+ "<td><input type='text' id='patientId"+index+"' disabled='disabled' value='"+r.getPatientId()+"'></td>"
+										+ "<td><input type='text' id='appointmentDate"+index+"' disabled='disabled' value='"+r.getAppointmentDate()+"'></td>"
+												+ "<td><input type='text' id='appointmentSlot"+index+"' disabled='disabled' value='"+r.getAppointmentSlot()+"'></td>"
+														+ "<td><button value='"+index+"' onclick='bookSlot(this.value)'>Book</button></td>"+"</tr></tbody>";
 		}
-		m.addAttribute("appointments", appointments);
-		return "doctorSchedule";
+		data += "</table>";
+		return data;
 	}
 	@RequestMapping("/bookReschedule")
-	public String bookReschedule(Appointments appointments,Model m){
+	public @ResponseBody String bookReschedule(Appointments appointments){
 		reporterService.updateAppointment(appointments);
-		m.addAttribute("msg", "appointment Rescheduled Successfully");
-		m.addAttribute("appointments", appointments);
-		return "appointmentBooked";
+		return "<div class='jumbotrone'><h3>Re-Scheduled Successfully !</h3></div>";
 	}
+	
+	//-----------pending reports 
 	@RequestMapping("/pendingReport")
 	public String pendingReport(Model m){
 		List<Appointments> li = reporterService.pendingReport();

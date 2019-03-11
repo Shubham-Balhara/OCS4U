@@ -21,10 +21,12 @@
     <label class="control-label col-sm-2">Specialization:</label>
     <div class="col-sm-10">
 	<s:setDataSource var="ds" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/project" user="root" password="root"/>
-	<s:query var="result" dataSource="${ds }" sql="select * from doctor"/>
+	<s:query var="result" dataSource="${ds }" sql="SELECT DISTINCT specialization FROM doctor ORDER BY specialization"/>
+	<%-- <c:set var="doctorset" value="${result.rows}">
+	</c:set> --%>
 	<select id="doctorType">
 	<c:forEach items="${result.rows }" var="doctor">
-		<option value="${doctor.specialization }">${doctor.specialization }</option>
+		<option value="${doctor.get('specialization') }">${doctor.get('specialization') }</option>
 	</c:forEach>
 	</select>
 	</div>
